@@ -2,31 +2,29 @@
 
 ## Getting Started
 
-### Install
+### Installation
 
 `$ npm install --save express` 로 간단히 설치를 진행한다
 
 package.json 파일 "dependencies"에 express가 확인되면 설치완료
 
+<br>
 
-
-### How to use
-
-#### 기본 사용법
+### 기본 사용법
 
 ``` js
 # Express 예제
-const express = require('express'); 	# Express를 불러온다.
-const app = express(); 					# 불러온 Express를 통해 객체를 생성
+const express = require('express'); 	    # Express를 불러온다.
+const app = express(); 			    # 불러온 Express를 통해 객체를 생성
 
-app.get('/', function(req, res){		# app객체를 통해서 라우터를 생성한다.
-    res.render('index'); 				# root로 이동 시 index페이지를 보여주도록 설정
+app.get('/', function(req, res){	    # app객체를 통해서 라우터를 생성한다.
+    res.render('index'); 		    # root로 이동 시 index페이지를 보여주도록 설정
 });
 
-app.listen(8080);						# 8080(default)포트를 사용하면 80포트로 자동 바인딩
+app.listen(8080);			    # 8080(default)포트를 사용하면 80포트로 자동 바인딩
 ```
 
-
+<br>
 
 #### URL을 통한 값 받기
 
@@ -38,7 +36,7 @@ app.get('/hello/:name', function(){		# :name 자리에 문자열을 파라미터
 });
 ```
 
-
+<br>
 
 #### HTML의 form을 통한 값 받기
 
@@ -77,13 +75,13 @@ app.get('/send-data', function(){
 app.set('view engine', 'ejs');			# view엔진을 EJS로 설정
 app.get('/test',function(req, res){
     const test = 'test';
-    res.render('test', {_test : test});	# test라는 상수를 test.html로 전송
+    res.render('test', {_test : test});	        # test라는 상수를 test.html로 전송
 });
 ```
 
 ```html
 <!-- test.html -->
 <body>
-    <h1> <%= _test %> </h1>				<!-- jsp tag로 값을 사용할 수 있게 된다. -->
+    <h1> <%= _test %> </h1>			<!-- jsp tag로 값을 사용할 수 있게 된다. -->
 </body>
 ```
