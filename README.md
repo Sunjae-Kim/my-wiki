@@ -6,9 +6,14 @@ Today I Learned
 
 ### Categories
 
+* [Git](https://github.com/Sunjae-Kim/TIL/tree/master/git)
 * [Javascript](https://github.com/Sunjae-Kim/TIL/tree/master/javascript)
 
 <hr>
+
+### Git
+
+- [Git commands](https://github.com/Sunjae-Kim/TIL/blob/master/git/Git-commands.md)
 
 ### Javascript
 
