@@ -23,7 +23,8 @@ const push_to_dom2 = parsed_data => {
   const tv = document.querySelector("#tv");
   tv.innerHTML = "";
   const DataSet = parsed_data.data;
-  const imageData = DataSet[0];
+  const rand_num = Math.floor(Math.random() * DataSet.length);
+  const imageData = DataSet[rand_num];
   let imageUrl = imageData.images.fixed_height.url;
   let alt = imageData.title;
   tv.innerHTML = `<img class="img-center" src="${imageUrl}" alt="${alt}">`;
