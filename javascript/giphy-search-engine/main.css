@@ -31,11 +31,11 @@ h1 {
   width: 10%;
   display: inline-block;
   padding: 20px;
-  background-color: green;
+  background-color: #47C83E;
   color: white;
   font-size: 16px;
   font-family: Helvetica, sans-serif;
-  border: 1px solid green;
+  border: 1px solid #47C83E;
   border-radius: 5px;
 }
 
