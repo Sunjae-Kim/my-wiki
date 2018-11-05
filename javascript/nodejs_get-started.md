@@ -6,7 +6,7 @@
 
 1. 비동기 입출력 (Non-blocking I/O)
 2. 이벤트 기반 입출력 (Event Driven I/O)
-3. 노드의 모듈
+3. 노드 패키지 매니저 (Node Package Manager)
 
 ##### Example
 
@@ -25,11 +25,31 @@ file.read('a.txt', function(contents){
 var result = doAdd(10,10);
 ```
 
-```js
-# 3. 소스파일 하나에 모든 지원하는 기능이 포함되지 않고 아래와 같이 필요한 모듈만 불러서 사용하면 되는 방식으로 코드의 양이 적어지고 코드가 복잡하지 않게 된다.
-var module-1 = require('module-1');
-var module-2 = require('module-2');
-var module-3 = require('module-3');
+``` bash
+# 3. node를 사용하는 Repository 최상위 폴더에 init을 한다.
+$ npm init
+
+# package.json 파일이 생성된다.
+$ cat package.json
+{
+  ...
+  "license": "ISC"
+}
+
+# npm install --save <PackageName> 을 통해 module을 설치하고 package.json에서 확인한다.
+$ npm install --save underscore
+$ cat package.json
+{
+  ...
+  "license": "ISC",
+  "dependencies": {		# dependencies에서 설치한 module을 확인할 수 있다.
+    "underscore": "^1.9.1"
+  }
+}
 ```
 
-
+```js
+# 아래 코드처럼 호출해서 사용하면 되는 방식으로 코드의 양이 적어지고 코드가 복잡하지 않게 된다.
+const _ = require('underscore');
+const number = _.range(1,46);
+```
