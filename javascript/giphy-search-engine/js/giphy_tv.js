@@ -1,4 +1,4 @@
-// 2. API를 활용하여 data를 받는다. 그리고 가공한다.
+// 1. API를 활용하여 data를 받는다. 그리고 가공한다.
 const API_KEY2 = "841D6ajyMBrRob1F0IPNa74yjxOOSodb";
 const keywords = ["cat", "dog", "bird", "horse"];
 
@@ -18,7 +18,7 @@ const print_gif2 = keyword => {
   });
 }
 
-// 3. GIF 파일들을 div에 밀어넣는다.
+// 2. GIF 파일들을 div에 밀어넣는다.
 const push_to_dom2 = parsed_data => {
   const tv = document.querySelector("#tv");
   tv.innerHTML = "";
