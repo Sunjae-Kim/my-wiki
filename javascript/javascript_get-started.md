@@ -1,6 +1,6 @@
 # Javascript
 
-## Get Started
+## 1. Get Started
 
 Browser에서 적용되는 언어
 
@@ -8,7 +8,7 @@ Browser에서 적용되는 언어
 >
 > iexplorer를 제외한 대부분의 브라우저가 ECMA script의 표준을 따름
 
-### Web Service?
+### 1.1 Web Service?
 
 > **Web** : web은 컴퓨터들이 정보를 서로 공유할 수 있는 공간이다.
 >
@@ -20,7 +20,7 @@ Browser에서 적용되는 언어
 
 <br>
 
-### HTML
+### 1.2 HTML
 
 > **HTML** : HyperText Mark-up Language
 >
@@ -28,15 +28,15 @@ Browser에서 적용되는 언어
 >
 > **URL** : Uniform Resource Locator / 네트워크 상에서 자우너이 어디 있는지를 알려주기 위한 고유 규약
 
-### Hyper Text?
+### 1.3 Hyper Text?
 
 선형적인 텍스트가 아닌 비 선형적으로 이루어진 텍스트이며 기본적으로 Hyper Link를 통해 텍스트를 이동한다.
 
 <br>
 
-## Practice
+## 2. Practice
 
-##### a태그 클릭을 통해 h1의 내용을 변경시켜보기
+### 2.1 a 태그 클릭을 통해 h1의 내용을 변경시켜보기
 
 ```html
 <body>
@@ -64,13 +64,3 @@ what.addEventListener('click', () => {
     text.innerHTML = 'Happy hacking.';
 })
 ```
-
-
-
-
-
-
-
-
-
-
