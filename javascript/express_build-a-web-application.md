@@ -1,6 +1,6 @@
-# [Express](https://expressjs.com/ko/)
+# Express
 
-## Getting Started
+## 1. Getting Started
 
 ### Installation
 
@@ -8,9 +8,11 @@
 
 package.json 파일 "dependencies"에 express가 확인되면 설치완료
 
+**Link** : <https://expressjs.com/ko/>
+
 <br>
 
-### 기본 사용법
+#### 1.1 기본 사용법
 
 ``` js
 # Express 예제
@@ -26,7 +28,7 @@ app.listen(8080);			    # 8080(default)포트를 사용하면 80포트로 자동
 
 <br>
 
-#### URL을 통한 값 받기
+#### 1.2 URL을 통한 값 받기
 
 ```js
 # URL을 통한 값 받기
@@ -38,7 +40,7 @@ app.get('/hello/:name', function(){		# :name 자리에 문자열을 파라미터
 
 <br>
 
-#### HTML의 form을 통한 값 받기
+#### 1.3 HTML의 form을 통한 값 받기
 
 ```js
 # HTML의 form을 통한 값 받기
@@ -60,7 +62,7 @@ app.get('/send-data', function(){
 
 <hr>
 
-### Useful libraries
+## 2. Useful libraries
 
 | Name       | Installation                      | Official Page             |
 | ---------- | --------------------------------- | ------------------------- |
@@ -68,7 +70,7 @@ app.get('/send-data', function(){
 | EJS        | `$ npm install --save ejs`        | http://ejs.co/            |
 | Underscore | `$ npm install --save underscore` | https://underscorejs.org/ |
 
-#### EJS
+### 2.1 EJS
 
 ```js
 #app.js
