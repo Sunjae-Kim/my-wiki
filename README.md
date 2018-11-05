@@ -19,6 +19,7 @@ Today I Learned
 
 - [Express: build a web application](https://github.com/Sunjae-Kim/TIL/blob/master/javascript/express_build-a-web-application.md)
 - [Javascript: get started](https://github.com/Sunjae-Kim/TIL/blob/master/javascript/javascript_get-started.md)
+- [Javascript: giphy search engine](https://github.com/Sunjae-Kim/TIL/tree/master/javascript/giphy-search-engine)
 - [Node.js: get started](https://github.com/Sunjae-Kim/TIL/blob/master/javascript/nodejs_get-started.md)
 
 ## License
