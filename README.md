@@ -18,7 +18,8 @@ Today I Learned
 ### Javascript
 
 - [Express: build a web application](https://github.com/Sunjae-Kim/TIL/blob/master/javascript/express_build-a-web-application.md)
-- [Node.js: getting started](https://github.com/Sunjae-Kim/TIL/blob/master/javascript/nodejs_getting-started.md)
+- [Javascript: get started](https://github.com/Sunjae-Kim/TIL/blob/master/javascript/javascript_get-started.md)
+- [Node.js: get started](https://github.com/Sunjae-Kim/TIL/blob/master/javascript/nodejs_get-started.md)
 
 ## License
 
