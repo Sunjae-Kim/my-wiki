@@ -1,9 +1,8 @@
 body {
   width: 80%;
-  padding-top: 2%;
   max-width: 1024px;
   margin: 0 auto;
-  background-color: black;
+  /* background-color: black; */
 }
 
 h1 {
@@ -17,7 +16,7 @@ h1 {
 }
 
 .container-padding50 {
-  padding-top: 50%;
+  padding-top: 50px;
 }
 
 .container-textinput {
