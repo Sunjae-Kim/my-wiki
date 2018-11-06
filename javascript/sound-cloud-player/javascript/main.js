@@ -1,3 +1,6 @@
+const playlist = document.querySelector('#listDiv');
+playlist.innerHTML = localStorage.getItem('playlist');
+
 /* 1. 검색 */
 const searchInput = document.querySelector("#js-search");
 const submitButton = document.querySelector("#js-submit");
@@ -131,4 +134,6 @@ resetButton.addEventListener("click", () => {
 
   const searchResults = document.querySelector("#js-search-results");
   searchResults.innerHTML = null;
+
+  localStorage.removeItem('playlist');
 });
