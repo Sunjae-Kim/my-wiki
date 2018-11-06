@@ -1,18 +1,23 @@
 /* 1. 검색 */
 const searchInput = document.querySelector("#js-search");
 const submitButton = document.querySelector("#js-submit");
+
 searchInput.addEventListener("keyup", e => {
-  if (e.which === 13 && searchInput.value !== null && searchInput.value !== '') {
+  if (
+    e.which === 13 &&
+    searchInput.value !== null &&
+    searchInput.value !== ""
+  ) {
     console.log(searchInput.value);
     SoundCloudAPI.getTrack(searchInput.value);
   }
 });
 
-submitButton.addEventListener('click', e => {
-  if(searchInput.value !== null){
+submitButton.addEventListener("click", e => {
+  if (searchInput.value !== null && searchInput.value !== "") {
     SoundCloudAPI.getTrack(searchInput.value);
   }
-})
+});
 
 /* 2. SoundCloud API  사용하기 : Object 안에 key, value 형태로 구축한다.*/
 const SoundCloudAPI = {
@@ -25,8 +30,23 @@ const SoundCloudAPI = {
   getTrack: _track => {
     SC.get("/tracks", {
       q: _track
-    }).then(function(_tracks) {
+    }).then(function(_tracks) { // promise 기능
       SoundCloudAPI.renderTracks(_tracks);
+    });
+  },
+
+  addToList: _trackURL => {
+    SC.oEmbed(_trackURL, {
+      auto_play: true
+    }).then(function(embed) {
+      const listDiv = document.querySelector("#listDiv");
+      const playbox = document.createElement('div');
+      playbox.innerHTML = embed.html;
+      listDiv.insertBefore(playbox, listDiv.firstChild);
+
+      // Local storage
+      localStorage.setItem('playlist', listDiv.innerHTML);
+      console.log(localStorage);
     });
   }
 };
@@ -47,7 +67,8 @@ SoundCloudAPI.renderTracks = tracks => {
 
       const imageImg = document.createElement("img");
       imageImg.classList.add("image_img");
-      imageImg.src = (track.artwork_url || "https://fakeimg.pl/290x290/5D5D5D/?text=No Image");
+      imageImg.src =
+        track.artwork_url || "https://fakeimg.pl/290x290/5D5D5D/?text=No_Image";
 
       imageDiv.appendChild(imageImg);
 
@@ -85,15 +106,29 @@ SoundCloudAPI.renderTracks = tracks => {
       buttonDiv.appendChild(icon);
       buttonDiv.appendChild(buttonText);
 
+      buttonDiv.addEventListener("click", () => {
+        SoundCloudAPI.addToList(track.permalink_url);
+      });
+
+      // AppendChild
       card.appendChild(imageDiv);
       card.appendChild(content);
       card.appendChild(buttonDiv);
 
       searchResults.appendChild(card);
-      console.log(card);
     }
   });
 };
 
 /* 4. Playlist 에 추가하고 실제로 재생하기 */
 SoundCloudAPI.init();
+
+/* 5. Reset 구현하기 */
+const resetButton = document.querySelector("#reset_btn");
+resetButton.addEventListener("click", () => {
+  const listDiv = document.querySelector("#listDiv");
+  listDiv.innerHTML = null;
+
+  const searchResults = document.querySelector("#js-search-results");
+  searchResults.innerHTML = null;
+});

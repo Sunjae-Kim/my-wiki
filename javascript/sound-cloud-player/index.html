@@ -10,9 +10,11 @@
 <body id="soundcloud-player">
 
 <div class="ui container col">
-    <div class="col-left js-playlist">
-        <div class="inner">
+    <div id ="js-playlist" class="col-left">
+        <button id="reset_btn" class="btn">Reset</button>
+        <div id="listDiv" class="inner">
             <!--Playstack-->
+            
 
         </div>
     </div>
@@ -34,6 +36,8 @@
         </div>
     </div>
 </div>
+
+
 <!-- Sound Cloud SDK 추가 -->
 <script src="https://connect.soundcloud.com/sdk/sdk-3.3.0.js"></script>
 <script src='javascript/semantic.min.js'></script>
