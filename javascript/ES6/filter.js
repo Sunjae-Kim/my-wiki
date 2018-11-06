@@ -38,11 +38,11 @@ var admins = users.filter( user => user.admin );
 var numbers = [10,20,30];
 
 function reject(array, iterFunction){
-  //채워봐용
+  return array.filter(function(element){
+    return !iterFunction(element);
+  });
 }
 
-var lessThan15 = reject(numbers, function(number){
-  return number > 15;
-})
+var lessThan15 = reject(numbers, number => number > 15)
 
 console.log(lessThan15)
