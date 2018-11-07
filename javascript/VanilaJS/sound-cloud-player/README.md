@@ -254,4 +254,6 @@ SoundCloudAPI.init();
 
 | Code                      | Description                          |
 | ------------------------- | ------------------------------------ |
-| `const result = a || b ;` | a가 true면 a를 반환, 아니면 b를 반환 |
+| `const result = a \|\| b ;` | a가 true면 a를 반환, 아니면 b를 반환 |
+
+
