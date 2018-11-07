@@ -18,6 +18,37 @@ for(var i = 0; i < products.length; i++){
 var vegetables = products.filter(product => product.type === 'vegetable');
 
 /* In Real Life */
+var posts = [
+  { id: 1, title: 'New post', content: 'Great'},
+  { id: 2, title: 'ES6 means..', content: 'EcmaScript V6'}
+];
+
+var comments = [
+  { postID: 1, content: 'Awesome' },
+  { postID: 2, content: 'It\'s also known as EcmaScript2015' },
+  { postID: 2, content: 'We need Babel!' },
+  { postID: 1, content: 'Brand new :)' },
+  { postID: 2, content: 'ES6 supports filter method lol' }
+];
+
+// 특정 id 를 갖는 post를 뽑아내는 fucntion
+function setPost(id, posts) {
+  return posts.filter(function(post) {
+      return post.id === id;
+  });
+}
+
+// 특정 post에 달린 comment들을 뽑아내는 function
+function commentsForPost(post, allComments) {
+  return allComments.filter(function(comment) {
+      return comment.postID === post.id;
+  });
+}
+
+var my_post = setPost(2, posts)[0]; // setPost()의 결과물이 배열이기 때문에 요소가 하나라도 index 접근이 필요하다.
+
+// id 2 번인 Post의 댓글들을 뽑아내려면?
+console.log(commentsForPost(my_post, comments));
 
 /* 실습 1 */
 var numbers = [1,2,3,56,78,90];
