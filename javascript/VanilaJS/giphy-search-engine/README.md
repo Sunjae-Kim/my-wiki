@@ -81,8 +81,8 @@ const push_to_dom = parsed_data => {
 
 #### 3.1 Main Page
 
-![Main Page](https://github.com/Sunjae-Kim/TIL/blob/master/javascript/VanilaJS/giphy-search-engine/img/main.png)
+![Main Page](https://user-images.githubusercontent.com/40228715/48123757-117f0200-e2be-11e8-89f6-f3ce4af37e08.png)
 
 #### 3.2 Search Page
 
-![Search Page](https://github.com/Sunjae-Kim/TIL/blob/master/javascript/VanilaJS/giphy-search-engine/img/search.png)
+![Search Page](https://user-images.githubusercontent.com/40228715/48123758-117f0200-e2be-11e8-8ffc-b70219f4185e.png)
