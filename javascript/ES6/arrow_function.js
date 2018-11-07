@@ -23,7 +23,10 @@ const team = {
   teamName : 'Avengers',
   teamSummary : function() {
     return this.members.map(member => `${member} is the ${this.teamName}`)
-  }
+  },
+  makeFunctionLikeThis(){
+    console.log('hi');
+  },
 }
 
 team.teamSummary();
