@@ -17,8 +17,7 @@ Today I Learned
 
 ### Javascript
 
-* [ES6 New Features](https://github.com/Sunjae-Kim/TIL/blob/master/javascript/ES6)
-
+- [ES6 New Features](https://github.com/Sunjae-Kim/TIL/blob/master/javascript/ES6)
 - [Express: build a web application](https://github.com/Sunjae-Kim/TIL/blob/master/javascript/express_build-a-web-application.md)
 - [Javascript: get started](https://github.com/Sunjae-Kim/TIL/blob/master/javascript/javascript_get-started.md)
 - [Javascript: giphy search engine](https://github.com/Sunjae-Kim/TIL/tree/master/javascript/VanilaJS/giphy-search-engine)
