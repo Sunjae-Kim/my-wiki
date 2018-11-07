@@ -22,9 +22,12 @@ var onlyColors2 = myColors.reduce(function(acc, color) {
   return acc;
 }, []);
 
-/* 실제로는 ? */
+/* 
+  In real life
+  올바르게 닫힌 괄호 확인
+*/
 
-// 올바르게 닫힌 괄호 확인
+  // 내가만든 코드
 function isGoodParens(string) {
   if (string === "" || string === undefined || string === null) return false;
   var array = string.split("");
@@ -50,8 +53,19 @@ function isGoodParens(string) {
   result = result.length === 0 || false;
   return result;
 }
-
-isGoodParens(")");
+  // 강사님 코드
+function isGoodParens(string) {
+  return !string.split('').reduce(function(acc, char){
+    if(acc < 0) {
+      return  acc;
+    } else if (char ==='(') {
+      ++acc;
+    } else {
+      --acc;
+    }
+    return acc
+  }, 0);
+}
 
 /* 실습 1 */
 var trips = [{ distance: 34 }, { distance: 10 }, { distance: 100 }];
@@ -77,7 +91,8 @@ var deskTypes = desks.reduce(
 );
 console.log(deskTypes); // { sitting : 3, standing : 2 }
 
-/* 실습 3 */
+/* 실습 3 (advanced) */
+  // 내가 만든 코드
 function unique(array) {
   return Object.keys(
     array.reduce(function(acc, element) {
@@ -89,6 +104,18 @@ function unique(array) {
     return Number(element);
   });
 }
+  // 강사님 코드
+function unique(array) {
+  array.reduce(function(uniqArray, element){
+    if(!uniqArray.find(function(uniqElement){
+        return element === uniqElement;
+      })) {
+        uniqArray.push(element);
+      }
+      return uniqArray;
+  }, []);
+}
+  
 
 var numbers = [4, 1, 3, 2, 2, 1, 3, 3, 4, 4, 4];
 unique(numbers); // [1,2,3,4]

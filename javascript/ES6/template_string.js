@@ -1,6 +1,10 @@
 const name = 'sunjae-kim';
+/* ES5 */
 const string = 'my name is ' + name;
-const newString = `my name is ${name}`
 
-// 안에 함수도 정의할 수 있다.
+/* 
+  ES6 
+  `` 안에 String을 넣고 ${} 안으로 변수 및 함수 접근이 가능하다.
+*/
+const newString = `my name is ${name}`
 const time = `The year is ${new Date().getFullYear()}`

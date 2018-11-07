@@ -8,7 +8,10 @@ for(var i = 0; i < numbers.length; i++){
 }
 
 
-/* ES6 map */
+/* 
+  ES6 map 
+  배열의 요소별로 접근 및 연산하여 새로운 배열을 반환
+*/
 
 var tNumbers = numbers.map(function(number){
   return number * 3;

@@ -37,7 +37,24 @@ console.log(car);
 /* In real life */
 // http://myblog.com/articles/1
 
-/* 실습 1 */
+const articles = [
+  { id: 1, title: 'Motto', content: 'HappyHacking' },
+  { id: 2, title: 'My presonal Info', content: 'It\'s secret guys lol' },
+  { id: 3, title: 'Ruby vs Python', content: 'Do what you want!' },
+  { id: 4, title: 'Welcome to the', content: 'Black parade' },
+  //...
+];
+  
+const articleId = getIdFromURL();
+
+const article = articles.find(function(article) {
+  return article.id === articleID;
+});
+
+/* 
+  실습 1 
+  유저 리스트에서 admin 찾기
+*/
 var users = [
   { id: 1, admin: false},
   { id: 2, admin: false},
@@ -50,8 +67,10 @@ admin = users.find(function(user){
   return user.admin;
 })
 
-/* 실습 2 */
-// 잔액이  12인 계좌를 account에 저장하자!
+/* 
+  실습 2 
+  잔액이  12인 계좌를 account에 저장하자!
+*/
 
 var accounts = [
   { balance: -10 },
@@ -63,7 +82,10 @@ var account;
 
 account = accounts.find(account => account.balance === 12);
 
-/* 실습 3 */
+/* 
+  실습 3 (advanced)
+  정해진 조건에 맞는 요소 검색
+*/
 var laders = [
   { id: 1, height: 20 },
   { id: 3, height: 25 },

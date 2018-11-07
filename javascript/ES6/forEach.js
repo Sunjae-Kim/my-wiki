@@ -13,14 +13,10 @@ colors.forEach(function(color){
 var numbers = [1,2,3,4,5];
 var sum = 0;
 
-// 함수 별도 정의
-function add(number){
-  sum += number;
-}
-
-// add라는 logic을 호출한것이기 때문에 ()를 쓰지 않는다.
-numbers.forEach(add) 
-console.log(sum);
+  // 함수 별도 정의
+function add(number){ sum += number }
+  // add라는 logic을 호출한것이기 때문에 ()를 쓰지 않는다.
+numbers.forEach(add);
 
 /* In Real World */
 spamMails = [];
@@ -32,7 +28,7 @@ spamMails.forEach(function(spamMail){
   deleteMail(spamMail);
 })
 
-/* 실습1 */
+/* 실습 1 */
 function handlePosts(){
   var posts = [
     {id:1,title:'a'},

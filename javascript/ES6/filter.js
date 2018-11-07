@@ -65,7 +65,7 @@ var users = [
 
 var admins = users.filter( user => user.admin );
 
-/* 실습 3 */
+/* 실습 3 (advanced) */
 var numbers = [10,20,30];
 
 function reject(array, iterFunction){

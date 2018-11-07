@@ -28,5 +28,4 @@ const team = {
     console.log('hi');
   },
 }
-
 team.teamSummary();
