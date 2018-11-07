@@ -1,12 +1,12 @@
 # TIL
 
 ## Table of Contents
-> - [1. Categories](#1-categories)
->   - [1.1 Git](#11-git)
->   - [1.2 Javascript](#12-javascript)
-> - [2. License](#2-license)
+ - [1. Categories](#1-categories)
+   - [1.1 Git](#11-git)
+   - [1.2 Javascript](#12-javascript)
+ - [2. License](#2-license)
 
-<hr>
+<br>
 
 ## 1. Categories
 
