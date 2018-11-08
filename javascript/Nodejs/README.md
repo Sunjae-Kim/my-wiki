@@ -24,42 +24,6 @@ const doShow = contents => {
 }
 ```
 
-``` bash
-# 3. 노드 패키지 매니저 : node를 사용하는 Repository 최상위 폴더에 init을 한다.
-$ npm init
-
-# 아래와 같은 package.json 파일이 생성된다.
-$ cat package.json
-{
-  ...
-  "license": "ISC"
-}
-
-# npm install --save <PackageName> 을 통해 module을 설치하고 package.json에서 확인한다.
-$ npm install --save underscore
-$ cat package.json
-{
-  ...
-  "license": "ISC",
-  "dependencies": {		# dependencies에서 설치한 module을 확인할 수 있다.
-    "underscore": "^1.9.1"
-  }
-}
-
-# 노드실행을 위한 설치
-$ npm i -g node static
-$ node <Javascript.js>
-```
-
-```js
-/*
-  필요한 모듈만 호출해서 사용하면 되는 방식으로 
-  코드의 양이 적어지고 코드가 복잡하지 않게 된다.
-*/
-const _ = require('underscore');
-const number = _.range(1,46);
-```
-
 <br>
 
 ## 1. Global Object
@@ -286,8 +250,3 @@ logger.log('This is message');
 > This is message  // msg is logging!
 > Listener 호출! { id: 1, url: 'http://blog.com/' }
 > Event is happening!
-
-<br>
-
-## 4. Node Packge Manager
-
