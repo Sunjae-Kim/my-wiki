@@ -123,7 +123,8 @@ app.listen(port, () => {
 사용중인 포트가 정상 종료되지 않아서 계속 돌고있어서 강제종류 해야할 때
 
 ``` bash
-$ grep aux |
+$ ps aux | grep 'nodemon' 		# PID번호를 기억
+$ kill -9 <PID> 				# 프로세스 종료
 ```
 
 
