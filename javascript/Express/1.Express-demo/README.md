@@ -21,7 +21,7 @@
 ```bash
 $ npm -g ls --depth=0
 ...
-+-- nodemon@1.18.6 				# 이렇게 nodemon이 나와야 정상적으로 깔린 것!
++-- nodemon@1.18.6 			# 이렇게 nodemon이 나와야 정상적으로 깔린 것!
 ```
 
 <br>
@@ -30,7 +30,7 @@ $ npm -g ls --depth=0
 
 ``` bash
 $ ps aux | grep 'nodemon' 		# PID번호를 기억
-$ kill -9 <PID> 				# 프로세스 종료
+$ kill -9 <PID> 			# 프로세스 종료
 ```
 
 <br>
@@ -74,20 +74,20 @@ console.log('Listening on port 3000');
 Express를 이용해서 위의 HTTP와 동일한 코드를 작성
 
 ```js
-const express = require("express");			# 설치한 Express를 호출한다.
-const app = express();						# 불러온 Express를 통해 app 객체를 생성
+const express = require("express");			// 설치한 Express를 호출한다.
+const app = express();					// 불러온 Express를 통해 app 객체를 생성
 
-app.get("/", (req, res) => {				# app객체를 통해서 라우터를 생성한다.
-  res.send("Happy Hacking!");				# res 객체로 client 에게 메세지 전송
+app.get("/", (req, res) => {				// app객체를 통해서 라우터를 생성한다.
+  res.send("Happy Hacking!");				// res 객체로 client 에게 메세지 전송
 });
 
 app.get("/api", (req, res) => {
   const data = { name: "sunjae",  age: 25, 
                 admin: true };
-  res.send(data);							# res 객체로 client 에게 데이터 전송
+  res.send(data);					// res 객체로 client 에게 데이터 전송
 });
 
-app.listen(3000, () => {					# 3000포트로 client의 요청을 들음
+app.listen(3000, () => {				// 3000포트로 client의 요청을 들음
   console.log('Listening on port 3000');
 });
 ```
