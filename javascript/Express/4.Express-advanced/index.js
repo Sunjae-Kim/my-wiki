@@ -1,5 +1,4 @@
-const startupDebugger = require('debug')('app:startup');
-const dbDebugger = require('debug')('app:db');
+const debug = require('debug')('app:startup');
 const helmet = require("helmet");
 const morgan = require("morgan");
 const config = require("config");
@@ -9,17 +8,13 @@ const auth = require("./middlewares/auth");
 const express = require("express");
 const app = express();
 
-console.log(app.get('env'));
-console.log(app.get('debug'));
-
 /* 
   Middle Ware
   request.body의 값이 통과할 때 Object로 변환시키는 역할
 */
 app.use(helmet());
 if(app.get('env') === 'development'){
-  startupDebugger('MORGAN을 실행합니다.')
-  dbDebugger('DB Connecting');
+  debug('MORGAN을 실행합니다.')
   app.use(morgan('dev'));
 }
 app.use(express.json());
@@ -28,13 +23,20 @@ app.use(express.static("public"));
 app.use(logger);
 app.use(auth);
 
+app.set('view engine', 'pug');
+app.set('views', './views'); 
+
 app.get("/", (req, res) => {
-  res.send("Happy Hacking");
+  res.render('index', {
+    title: 'Happy Hacking',
+    greeting: 'May you have Happy Hacking'
+  });
 });
 
 app.get("/:name", (req, res) => {
   res.send(`Hi ${req.params.name}`);
 });
+
 
 /* 
   Database

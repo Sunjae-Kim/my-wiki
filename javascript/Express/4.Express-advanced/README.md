@@ -56,10 +56,9 @@
   app.use(logger);
   ```
 
-
 ---
 
-### 1.3 **Other Middleware**
+### 1.3 Other Middleware
 
 - ##### `express.urlencoded`
 
@@ -105,6 +104,11 @@
   }
   ```
 
+  ```bash
+  # 요청이 왔을 때 실행결과 :
+  GET / 200 1231.207 ms - 102
+  ```
+
   > NODE_ENV로 사용하는 노드의 환경을 설정해야한다.
   >
   > `$ export NODE_ENV=development` 로 설정해두도록 하자.
@@ -124,7 +128,7 @@
 
 - ##### `debug`
 
-  `$ export DEBUG=app:<env>`의 `env` 값을 설정하여 어느 환경에서 debug를 실행할지 관리하는 미들웨어
+  `$ export DEBUG=app:<env>`의 `env` 값을 설정하여 어느 환경에서 debug를 실행할지 관리하고 log를 남기는 미들웨어
 
   ```js
   const startupDebugger = require('debug')('app:startup');
@@ -137,3 +141,67 @@
     app.use(morgan('dev'));
   }
   ```
+
+---
+### 1.4 Template Engine
+
+- **views**폴더에 **index.pug** 파일을 생성
+
+  ```pug
+  html
+    head
+      title= title
+    body
+      h1= greeting
+  ```
+
+- `pug`로 뷰엔진을 세팅 및 라우터 세팅
+
+  ```js
+  app.set('view engine', 'pug');
+  app.set('views', './views'); // default가 views폴더
+  
+  app.get("/", (req, res) => {
+    res.render('index', {
+      title: 'Happy Hacking',
+      greeting: 'May you have Happy Hacking'
+    });
+  });
+  ```
+
+- **실행결과 :**
+
+  ```html
+  <html>
+      <head>
+          <title>Happy Hacking</title>
+      </head>
+      <body>
+          <h1>May you have Happy Hacking</h1>
+      </body>
+  </html>
+  ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
