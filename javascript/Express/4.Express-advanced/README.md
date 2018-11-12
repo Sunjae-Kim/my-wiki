@@ -16,7 +16,7 @@
 
    Request를 받은 뒤 Route Handler 함수로 넘어가기 전에 지시한 작업을 마치고 다음 미들웨어로 넘겨주는 함수이다.
 
-  > `app.use(express.json());` 함수의 경우에는 원래는 request.body 에서 string 값으로 넘어오나 해당 함수로 인해서 Object로 넘어오게 됨
+   > `app.use(express.json());` 함수의 경우에는 원래는 request.body 에서 string 값으로 넘어오나 해당 함수로 인해서 Object로 넘어오게 됨
 
   
 
@@ -143,7 +143,7 @@
   ```
 
 ---
-### 1.4 Template Engine
+### 1.4 Template Engine [PUG]
 
 - **views**폴더에 **index.pug** 파일을 생성
 
@@ -155,7 +155,7 @@
       h1= greeting
   ```
 
-- `pug`로 뷰엔진을 세팅 및 라우터 세팅
+- `pug`로 **뷰엔진** 세팅 및 **라우터** 세팅
 
   ```js
   app.set('view engine', 'pug');
@@ -182,9 +182,34 @@
   </html>
   ```
 
+---
 
+### 1.5 Refactoring
 
+- games에서 수행하는 작업을 따로 빼보도록 하자
 
+  [**games.js**](https://github.com/Sunjae-Kim/TIL/tree/master/javascript/Express/4.Express-advanced/routes/games.js) 에 game에서 사용될 모든 함수와 DB를 뺀다음 exports하고 **index.js** 에서 다른 미들웨어처럼 불러와서 사용해보자. 
+
+  ```js
+  /* games.js */
+  const express = require('express');
+  const router = express.Router();
+  ...
+  module.exports = router;
+  ```
+
+  ```js
+  /* 
+    index.js
+    Middlewares
+    request.body의 값이 통과할 때 Object로 변환시키는 역할
+  */
+  app.use(helmet());
+  ...
+  app.use('/api/games', games);
+  ```
+
+  > `'/api/games'` 로 접근하는 모든 url에 대해서는 **games.js** 라우터로 통하도록 한다.
 
 
 
