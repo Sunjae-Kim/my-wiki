@@ -37,15 +37,6 @@ const userSchema = {
     .max(150)
 };
 
-class User {
-  constructor(id) {
-    this.id = id;
-    this.name = null;
-    this.email = null;
-    this.age = null;
-  }
-}
-
 /* Configuration */
 const app = express();
 app.use(express.json());
@@ -80,8 +71,13 @@ app.post("/api/users/", (req, res) => {
     if (error) return res.status(400).send(error.message);
 
     // 유효성 검사 통과 시 등록
-    const user = new User(++users.SEQ);
-    utility.modify(user, req.body);
+    const { name, email, age } = req.body;
+    const user = {
+      id: ++users.SEQ,
+      name,
+      email,
+      age,
+    };
     users.details.push(user);
 
     // 등록된 유저를 보내준다.
