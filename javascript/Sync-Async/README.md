@@ -211,6 +211,210 @@ function getRepos(userID, callback) {
 
   > 에러는 어느 과정에서 일어나도 마지막 `catch` 로 들어가서 에러를 출력시켜줄 것이기 때문에 `then` 뒤에 매번 작성할 필요는 없다.
 
+---
+
+### 2.3 `all`, `race`
+
+- **예시)**
+
+  3가지의 서로 반환되기까지 시간이 다른 Promise를 만들고 테스트를 진행해보자.
+
+  ```js
+  const p1 = new Promise((resolve, reject) => {
+    console.log('Fetching from Bank1');
+    setTimeout(()=>{
+      const response = { bank: 1, delayed: false};
+      resolve(!response.delayed);
+    }, 1000);
+  });
+  
+  const p2 = new Promise((resolve, reject)=>{
+    console.log('Fetching from Bank2');
+    setTimeout(()=>{
+      const response = { bank: 2, delayed: true};
+      resolve(!response.delayed);
+    }, 1400);
+  });
+  
+  const p3 = new Promise((resolve, reject)=>{
+    console.log('Fetching from Bank3');
+    setTimeout(()=>{
+      const response = { bank: 3, delayed: false};
+      resolve(!response.delayed);
+    }, 2000);
+  });
+  
+  ```
+
+- `Promise.all`
+
+  모든 Promise들이 다 반환되고 난 뒤에결과값을 배열로 반환하는 함수
+
+  ```js
+  Promise.all([p1,p2,p3])
+    .then(result => console.log(result))
+    .catch();
+  ```
+
+  > Fetching from Bank1
+  > Fetching from Bank2
+  > Fetching from Bank3
+  > [ true, false, true ]
+
+- `Promise.race`
+
+  ```js
+  Promise.race([p1,p2,p3])
+    .then(result => console.log(result))
+    .catch();
+  ```
+
+  > Fetching from Bank1
+  > Fetching from Bank2
+  > Fetching from Bank3
+  > true
+
+---
+
+## 3. Async-Await
+
+#### 3.1 Learn
+
+- 위의 예시들에서 우리가 정말로 원했던 코드의 모양은 아래와 같을 것이다.
+
+  ```js
+  const user = getUser(1);
+  const repos = getRepos(user.gitHubID);
+  const commits = getCommits(repos[0]);
+  console.log(commits);
+  ```
+
+  > 하지만 검색 결과는 모두 undefined가 될것이다.
+  >
+  > 이 Logic 그대로 우리가 원하는대로 사용할 수 있는 방법은 없을까?
+
+- **using Async-Await**
+
+  말그대로 비동기를 기다렸다가 수행하라는 코드로 아래와 같이 작성이 가능하게 된다.
+
+  ```js
+  async function run() {
+      const user = await getUser(1);
+      const repos = await getRepos(user.gitHubID);
+      const commits = await getCommits(repos[0]);
+      console.log(commits);
+  }
+  
+  run();
+  ```
+
+  > function 앞에 async를 붙이고
+  >
+  > Promise 함수 앞에 await를 붙인다.
+
+- **try-catch**
+
+  Promise의 `then` 함수를 사용할 때와 마찬가지로 예외처리 코드를 추가해보자
+
+  ```js
+  async function run() {
+    try{
+      const user = await getUser(1);
+      const repos = await getRepos(user.gitHubID);
+      const commits = await getCommits(repos[0]);
+      console.log(commits);
+    }catch(error){
+      console.error(error);
+    }
+  }
+  
+  run();
+  ```
+
+#### 3.2 Practice
+
+- Get Lucky Numbers
+
+  로또 API를 통해서 럭키 넘버를 뽑아보자!
+
+  ```js
+  const http = require("http");
+  
+  function getLottoData(drwNo){
+    const url = `http://www.nlotto.co.kr/common.do?method=getLottoNumber&drwNo=${drwNo}`;
+  
+    return new Promise((resolve, reject) => {
+      http.get(url, res => {
+        let buff = '';
+        
+        res.on('data', chunk => {
+          buff += chunk;
+        });
+  
+        res.on('end', () => {
+          if(buff) resolve(JSON.parse(buff));
+          else reject(new Error('error occured'));
+        });
+      });
+    });
+  }
+  
+  function findLuckyNumbers(lottoData={}){
+    for ( const [key, value] of Object.entries(lottoData)) {
+      console.log(`${key} : ${value}`);
+    }
+  }
+  
+  getLottoData(800)
+    .then(result => findLuckyNumbers(result))
+    .catch(error => console.error(error));
+  ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
