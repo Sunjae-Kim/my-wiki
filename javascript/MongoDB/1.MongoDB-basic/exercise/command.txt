@@ -1,0 +1,20 @@
+Terminal
+$ mongoimport --db exercise-basic --collection courses --drop --file data.json --jsonArray
+
+exercise 1
+    1. publish 된 course 들 중에서 backend 코스인 것들을,
+    2. 이름 오름차순으로 정렬하고,
+    3. name 과 author 만을,
+    4. 출력해보자구!
+
+exercise 2
+    1. publish 된 course 들 중에서 backend 와 frontend 모두를,
+    2. price 내림차순으로,
+    3. name 과 price 만,
+    4. 출력해보자구!
+
+exercise 3
+    1. 모든 course 들 중에서
+    2. price 15 이상이거나,
+    3. name 에 대소문자 구분없이 'js' 가 들어간 강의들을,
+    4. 출력해보자구!
