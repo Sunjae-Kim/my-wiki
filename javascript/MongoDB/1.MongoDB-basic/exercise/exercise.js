@@ -36,7 +36,8 @@ async function getExercise1() {
 
 async function getExercise2() {
   try {
-    const courses = await Course.find({ isPublished: true })
+    const courses = await Course
+      .find({ isPublished: true })
       .or([{ tags: "frontend" }, { tags: "backend" }])
       .sort({ price: -1 })
       .select("name price");

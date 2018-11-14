@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/exercise-basic', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/hello-mongo', { useNewUrlParser: true })
   .then(() => console.log('Successfully Connected to MongoDB'))
   .catch(error => console.log(error));
 
@@ -8,6 +8,7 @@ mongoose.connect('mongodb://localhost/exercise-basic', { useNewUrlParser: true }
   Available Schema Datatypes : 
   String, Number, Date, Buffer, Boolean, ObjectID, Array
 */
+
 const courseSchema = new mongoose.Schema({
   name: String,
   author: String,
@@ -60,4 +61,35 @@ async function getCourse(){
     console.error(error.message);
   }
 }
+
+/* Update */
+/* Query First */
+async function updateCourse(id){
+  try{
+    // Find
+    const course = await Course.findById(id); // 1개 객체 반환
+    if(!course) return;
+
+    // Change
+    course.author = '선재';
+    course.tags = ['TIL', 'MusicSeed', 'Gardeners'];
+
+    // Save
+    const result = await course.save();
+    console.log(result);
+  }catch(error){
+    console.error(error)
+  }
+}
+
+/* Update First */
+async function updateCourse(id){
+  try{
+    
+  }catch(error){
+    console.error(error)
+  }
+}
+
+updateCourse('5bea693bf8d7e82b582469a9');
 
