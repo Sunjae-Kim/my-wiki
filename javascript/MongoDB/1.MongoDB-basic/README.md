@@ -165,10 +165,31 @@
 - **직접 Update > result**
 
   ```js
-  
+  async function updateCourses(){
+    try{
+      const result = await Course.updateMany({ isPublished: false }, {
+        $set: {
+          author: 'Sunjae',
+        }
+      })
+      console.log(result);
+    }catch(error){
+      console.error(error)
+    }
+  }
   ```
 
+  >- `updateMany` 
   >
+  >  `$set`을 통해서 Model 내의 모든 정보를 일괄 수정할 수 있다.
+  >
+  >  위의 예시의 경우에는 `isPublished` 가 true인 모든 course를 찾아서 수정한 코드이다. 
+  >
+  >- `findByIDAndUpdate` 
+  >
+  >  말그대로 한개만 찾아서 update를 한다.
+  >
+  >- `$inc` 를 통해서 설정된 값으로 증가하거나 뺄 수있다.
 
 
 

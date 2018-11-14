@@ -83,13 +83,17 @@ async function updateCourse(id){
 }
 
 /* Update First */
-async function updateCourse(id){
+async function updateCourses(){
   try{
-    
+    const result = await Course.updateMany({ isPublished: false }, {
+      $set: {
+        author: 'Sunjae',
+      }
+    })
+    console.log(result);
   }catch(error){
     console.error(error)
   }
 }
 
-updateCourse('5bea693bf8d7e82b582469a9');
-
+updateCourses();
