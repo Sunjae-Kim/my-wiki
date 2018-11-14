@@ -191,7 +191,20 @@
   >
   >- `$inc` 를 통해서 설정된 값으로 증가하거나 뺄 수있다.
 
+### 3.4 Delete
 
+- 삭제를 해보자.
+
+  ```js
+  async function removeCourse(id){
+    const result = await Course.deleteOne({ _id: id });
+    console.log(result);
+  }
+  ```
+
+  > `deleteOne` 말고 `findByIDAndDelete` 함수로 매개변수로 바로 ObjectID Type을 받아서 삭제도 가능하다.
+
+## 4. Schema
 
 
 
