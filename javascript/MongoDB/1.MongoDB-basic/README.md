@@ -208,17 +208,18 @@
 
 ### 4.1 Validating Options
 
-Model에 대한 Schema를 만들 때 자주 사용하는 옵션들
+- Model에 대한 Schema를 만들 때 자주 사용하는 옵션들
 
-|               | code        | definition         | example                                  |
-| ------------- | ----------- | ------------------ | ---------------------------------------- |
-| *             | `required`  | 필수 항목으로 설정 | `name: { type: String, required: true }` |
-| String        | `minlength` | 최소 글자수 설정   | `name: { type: String, minlength: 2}`    |
-| String        | `maxlength` | 최고 글자수 설정   | `name: { type: String, maxlength: 10}`   |
-| Numers, Dates | `min`       | 최소               | -                                        |
-| Numers, Dates | `max`       | 최고               | -                                        |
+  |               | code        | definition         | example                                  |
+  | ------------- | ----------- | ------------------ | ---------------------------------------- |
+  | *             | `required`  | 필수 항목으로 설정 | `name: { type: String, required: true }` |
+  | String        | `minlength` | 최소 글자수 설정   | `name: { type: String, minlength: 2}`    |
+  | String        | `maxlength` | 최고 글자수 설정   | `name: { type: String, maxlength: 10}`   |
+  | Numers, Dates | `min`       | 최소               | -                                        |
+  | Numers, Dates | `max`       | 최고               | -                                        |
 
-> 참고 : <https://mongoosejs.com/docs/validation.html>
+  > 참고 : <https://mongoosejs.com/docs/validation.html>
+
 
 ### 4.2 custom validator
 
