@@ -10,9 +10,18 @@ mongoose.connect('mongodb://localhost/hello-mongo', { useNewUrlParser: true })
 */
 
 const courseSchema = new mongoose.Schema({
-  name: String,
+  name: { type: String, required: true, minlength: 2},
   author: String,
-  tags: [ String ],
+  tags: {
+     type: Array,
+     validate: {
+      validator: function(tags) { 
+        const result = tags.every(tag => tag.lenght > 0);
+        return tags && tags.length > 0 && result;
+      },
+      message: 'A Course should have at least 1 tag'
+     }
+  },
   date: { type: Date, default: Date.now },
   isPublished: Boolean
 });
@@ -24,9 +33,9 @@ const Course = mongoose.model('Course', courseSchema);
 /* Create */
 async function createCourse() {
   const course = new Course({
-    name: '실전 DApp 빌드',
-    author: 'john',
-    tags: ['Ethereum', 'Blockchain', 'DApp'],
+    name: 'a',
+    author: 'me',
+    tags: [],
     isPublished: true
   });
   
@@ -37,6 +46,8 @@ async function createCourse() {
     console.error(error.message);
   }
 }
+
+createCourse();
 
 /* Read */
 async function getCourses(){
