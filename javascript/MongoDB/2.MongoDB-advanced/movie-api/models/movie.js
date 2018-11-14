@@ -15,7 +15,11 @@ const movieSchema = new mongoose.Schema({
   mainActor: {
     type: String,
     minlength: 1
-  }
+  },
+  genre: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref : 'Genre'
+  }]
 });
 
 const Movie = mongoose.model("Movie", movieSchema);
@@ -24,7 +28,8 @@ function validateMovie(movie) {
   const schema = {
     title: Joi.string().min(3).max(50).required(),
     release: Joi.date().default(Date.now()),
-    mainActor: Joi.string().min(1)
+    mainActor: Joi.string().min(1),
+    genre: Joi.array().required()
   };
   return Joi.validate(movie, schema);
 }
