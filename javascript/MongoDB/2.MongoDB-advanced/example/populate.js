@@ -46,4 +46,18 @@ async function createCourse(name, author){
 }
 
 // const author = createAuthor('Sunjae', 'github.com/Sunjae-kim');
-const course = createCourse('TIL', '5beb8b743c4b6920dc64404e');
+// const course = createCourse('React', '5beb8b743c4b6920dc64404e');
+
+async function listCourses(){
+  try{
+    const courses = await Course
+      .find()
+      .populate('author')
+      .select('name');
+    console.log(courses);
+  } catch(error){
+    console.error(error.message);
+  }
+}
+
+listCourses();
