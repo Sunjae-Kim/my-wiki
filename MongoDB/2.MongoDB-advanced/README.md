@@ -2,7 +2,7 @@
 - [1. Relation](#1-relation)
     - [1.1 소유관계](#11-%EC%86%8C%EC%9C%A0%EA%B4%80%EA%B3%84)
     - [1.2 참조관계](#12-%EC%B0%B8%EC%A1%B0%EA%B4%80%EA%B3%84)
-- [2. Practice with Express](#2-practice-with-express)
+- [2. Practice with Express](#2-practice-with-express---making-a-movie-api)
 ## 1.  Relation
 
 ### 1.1 소유관계
@@ -95,13 +95,13 @@
 
 - 이제부터는 코드의 내용이 대부분이고 설명보다는 코드와 주석을 통해서 보는것이 이해가 더 빠를것이기 때문에 아래의 링크를 통해서 보도록 하자.
 
-- [Movie API](https://github.com/Sunjae-Kim/TIL/tree/master/mongodb/2.mongodb-advanced/movie-api)
-
-  - [models](https://github.com/Sunjae-Kim/TIL/tree/master/mongodb/2.mongodb-advanced/movie-api/models) : 모든 모델은 명시적으로 단수형으로 naming 정한다.
-    - [genre](https://github.com/Sunjae-Kim/TIL/tree/master/mongodb/2.mongodb-advanced/movie-api/models/genre.js)
-    - [movie](https://github.com/Sunjae-Kim/TIL/tree/master/mongodb/2.mongodb-advanced/movie-api/models/movie.js)
-  - [routes](https://github.com/Sunjae-Kim/TIL/tree/master/mongodb/2.mongodb-advanced/movie-api/routes) : 모든 라우터는 명시적으로 복수형으로 naming한다.
-    - [genres](https://github.com/Sunjae-Kim/TIL/tree/master/mongodb/2.mongodb-advanced/movie-api/routes/genres)
-    - [movies](https://github.com/Sunjae-Kim/TIL/tree/master/mongodb/2.mongodb-advanced/movie-api/routes/movies)
+- [Movie API](https://github.com/Sunjae-Kim/TIL/tree/master/MongoDB/2.MongoDB-advanced/movie-api)
+  - [index.js](https://github.com/Sunjae-Kim/TIL/blob/master/MongoDB/2.MongoDB-advanced/movie-api/index.js)
+  - [models](https://github.com/Sunjae-Kim/TIL/tree/master/MongoDB/2.MongoDB-advanced/movie-api/models) : 모든 모델은 명시적으로 단수형으로 naming 정한다.
+    - [genre](https://github.com/Sunjae-Kim/TIL/blob/master/MongoDB/2.MongoDB-advanced/movie-api/models/genre.js)
+    - [movie](https://github.com/Sunjae-Kim/TIL/blob/master/MongoDB/2.MongoDB-advanced/movie-api/models/movie.js)
+  - [routes](https://github.com/Sunjae-Kim/TIL/tree/master/MongoDB/2.MongoDB-advanced/movie-api/routes) : 모든 라우터는 명시적으로 복수형으로 naming한다.
+    - [genres](https://github.com/Sunjae-Kim/TIL/blob/master/MongoDB/2.MongoDB-advanced/movie-api/routes/genres.js)
+    - [movies](https://github.com/Sunjae-Kim/TIL/blob/master/MongoDB/2.MongoDB-advanced/movie-api/routes/movies.js)
 
   > 파일들은 Model과 Router별로 나누어져 관리되고 있으며 앞으로의 API들 역시 해당 모델로 만들어질것으로 잘 익혀두자.
