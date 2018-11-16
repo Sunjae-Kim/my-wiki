@@ -8,7 +8,7 @@
    - [Express](https://github.com/Sunjae-Kim/TIL/tree/master/javascript/Express)
    - [NodeJS](https://github.com/Sunjae-Kim/TIL/tree/master/javascript/Nodejs)
    - [Vanila Javascript](https://github.com/Sunjae-Kim/TIL/tree/master/javascript/VanilaJS)
- - [MongoDB](https://github.com/Sunjae-Kim/TIL/tree/master/mongodb/)
+ - [MongoDB](https://github.com/Sunjae-Kim/TIL/tree/master/MongoDB)
 
 
 ### 1. Git
@@ -29,8 +29,8 @@
 
 ### 3. MongoDB
 
-> - [MongoDB Basic](https://github.com/Sunjae-Kim/TIL/tree/master/mongodb/1.mongodb-basic)
-> - [MongoDB Advanced - Making a Movie API](https://github.com/Sunjae-Kim/TIL/tree/master/mongodb/2.mongodb-advanced)
+> - [MongoDB Basic](https://github.com/Sunjae-Kim/TIL/tree/master/MongoDB/1.MongoDB-basic)
+> - [MongoDB Advanced - Making a Movie API](https://github.com/Sunjae-Kim/TIL/tree/master/MongoDB/2.MongoDB-advanced)
 
 
 ## License
