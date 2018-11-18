@@ -1,4 +1,19 @@
 # Node Packge Manager
+- [Node Packge Manager](#node-packge-manager)
+  - [1. Getting Started](#1-getting-started)
+    - [1.1 Initiating](#11-initiating)
+    - [1.2 Installation & Removal](#12-installation--removal)
+      - [1.2.1 Semantic Versioning](#121-semantic-versioning)
+      - [1.2.2 Global Flag](#122-global-flag)
+      - [1.2.3 Development Flag](#123-development-flag)
+    - [1.3 Node_modules Directory](#13-nodemodules-directory)
+  - [2. Publishing](#2-publishing)
+    - [2.1 Initiating NPM](#21-initiating-npm)
+    - [2.2 Building Module](#22-building-module)
+    - [2.3 Publishing Module](#23-publishing-module)
+        - [login](#login)
+        - [Publish](#publish)
+    - [2.4 Version Up](#24-version-up)
 
 NPM(Node Package Manager)를 통해 필요한 모듈만 호출해서 사용하게 되면 개발 과정에서 코드의 양이 적어지고 코드가 복잡하지 않게 된다.
 

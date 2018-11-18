@@ -1,6 +1,17 @@
 # Sync-Async
 
-[TOC]
+- [Sync-Async](#sync-async)
+  - [1. Callback](#1-callback)
+    - [1.1 비동기 문제 해결](#11-%EB%B9%84%EB%8F%99%EA%B8%B0-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0)
+    - [1.2 Practice](#12-practice)
+    - [1.3 Callback 지옥](#13-callback-%EC%A7%80%EC%98%A5)
+  - [2. Promise](#2-promise)
+    - [2.1 사용하는 방법](#21-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95)
+    - [2.2 Hell to Promise](#22-hell-to-promise)
+    - [2.3 `all`, `race`](#23-all-race)
+  - [3. Async-Await](#3-async-await)
+      - [3.1 Learn](#31-learn)
+      - [3.2 Practice](#32-practice)
 
 **비동기 작업 예시)** `setTimeout`동작이 끝날때까지 기다리지 않고 다음 동작을 수행하는 함수
 

@@ -1,4 +1,18 @@
 # Sound Cloud Player
+- [Sound Cloud Player](#sound-cloud-player)
+  - [1. API활용](#1-api%ED%99%9C%EC%9A%A9)
+    - [1.1 SDK (Software Development Kit) Setting](#11-sdk-software-development-kit-setting)
+    - [1.2 Initializing](#12-initializing)
+    - [1.3 Searching](#13-searching)
+    - [1.4 Rendering](#14-rendering)
+    - [1.5 Adding To Playlist](#15-adding-to-playlist)
+    - [1.6 Saving and Loading the Playlist](#16-saving-and-loading-the-playlist)
+    - [1.7 Reset](#17-reset)
+  - [2. Core method](#2-core-method)
+    - [2.1 Refactoring](#21-refactoring)
+    - [2.2 Promise](#22-promise)
+    - [2.3 Handling HTML Tag](#23-handling-html-tag)
+    - [2.4 ETC.](#24-etc)
 
 ## 1. API활용
 

@@ -1,10 +1,10 @@
 # Giphy Search Engine
-1. [HTML](#1-HTML)
-1. [Javascript](#2-Javascript)
-1. [Screen Capture](#3-Screen-Capture)
-    1. [Main Page](#31-Main-Page)
-    1. [Search Page](#32-Search-Page)
-
+- [Giphy Search Engine](#giphy-search-engine)
+    - [1. HTML](#1-html)
+    - [2. Javascript](#2-javascript)
+    - [3. Screen Capture](#3-screen-capture)
+      - [3.1 Main Page](#31-main-page)
+      - [3.2 Search Page](#32-search-page)
 
 ### 1. HTML
 

@@ -1,4 +1,15 @@
 # Express Basic Practice
+- [Express Basic Practice](#express-basic-practice)
+  - [1. JSON File Setting](#1-json-file-setting)
+    - [1.1 파일생성](#11-%ED%8C%8C%EC%9D%BC%EC%83%9D%EC%84%B1)
+    - [1.2 기본 데이터 채우기](#12-%EA%B8%B0%EB%B3%B8-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B1%84%EC%9A%B0%EA%B8%B0)
+  - [2. File System](#2-file-system)
+    - [2.1 파일 저장 및 불러오기](#21-%ED%8C%8C%EC%9D%BC-%EC%A0%80%EC%9E%A5-%EB%B0%8F-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0)
+    - [2.2 Promise](#22-promise)
+  - [3. Refactoring](#3-refactoring)
+    - [3.1 Save DB](#31-save-db)
+    - [3.2 Utility](#32-utility)
+      - [사용 예제](#%EC%82%AC%EC%9A%A9-%EC%98%88%EC%A0%9C)
 
 [Express Basic](https://github.com/Sunjae-Kim/TIL/tree/master/javascript/Express/Express-basic) 에서 Express의 기본적인 사용법을 정리했다.
 
