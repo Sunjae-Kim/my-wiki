@@ -1,7 +1,7 @@
 import React from 'react'
 
 // Comment Component를 만들어보자.
-export default props => {
+export default function(props) {
   return (
     <div className="comment">
       <a href="#" className="avatar">
