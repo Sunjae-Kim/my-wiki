@@ -480,5 +480,224 @@
 
 ---
 
+### 3.7 Destructuring
+
+- 비구조화라는 개념으로 기존의 구조를 파괴시키는 작업이다.
+
+- 구조를 파괴시킴으로서 더 직관적이고 간결한 코드를 만들 수 있다.
+
+- **Object 에서의 비구조화** 
+
+  ```js
+  const computer = {
+    model : 'Macbook Air',
+    year : 2018,
+  }
+  
+  const { model, year } = computer;
+  ```
+
+  > computer 내에서의 변수 값을 위의 형식으로 불러올 수 있다.
+
+- **함수에서의 비구조화**
+
+  ```js
+  const myFile = {
+    extension: 'jpg',
+    name: 'profile',
+    size: 29847
+  }
+  
+  function summary({ name, extension, size }){
+    return `the file ${name}.${extension}의 크기는 ${size} 입니다.`
+  }
+  ```
+
+  > Object를 매겨변수로 받되 그 안의 변수값으로 함수내에서 사용할 수 있다.
+
+- **배열에서의 비구조화**
+
+  ```js
+  const companies = [
+    'Google',
+    'IBM',
+    'Amazon',
+    'Apple'
+  ]
+  
+  const [ name ] = companies; // Google
+  const [ name1, name2, name3 ] = companies;// Google, IBM, Amazon
+  const [ one, ...rest ] = companies; // Google , [IBM, Amazon, Apple]
+  ```
+
+  > 배열의 index 순서대로 접근할 수 있다.
+
+
+
+- **배열과 Object에서의 비구조화**
+
+  ```js
+  const wannaGo = [
+    { name: 'Google', location: 'Mountain View' },
+    { name: 'Facebook', location: 'Manlo Park' },
+    { name: 'Apple', location: 'Cupertino' },
+  ];
+  
+  let [ company ] = wannaGo;
+  let [{ location }] = wannaGo; // wannaGo[0].location
+  ```
+
+  > 배열의 index값 내부의 변수 이름으로 접근
+
+
+
+#### 3.7.1 실제 개발에서는?
+
+- xy값 파싱
+
+  ```js
+  const points = [
+    [7, 12],
+    [-20, 3],
+    [8, 0],
+  ];
+  
+  // { x: 7, y: 12 } 형식으로 만들고 싶음
+  points.map( ([ x, y ]) => {
+    return { x, y };
+  })
+  ```
+
+- 회원가입
+
+  ```js
+  const user = {
+    username: 'neo',
+    password: '123123',
+    email: 'neo@hphk.kr',
+  }
+  
+  function signup ({ username, password, email }) {
+    // signup logic
+  }
+  
+  signup(user);
+  ```
+
+- 수업 정리
+
+  ```js
+  const classes = [
+    ['실전 DApp', '9am', 'Mr.John'],
+    ['React', '1pm', 'neo'],
+    ['Capstone', '3pm', 'Multicampus'],
+  ];
+  
+  const classAsObject = classes.map( ([ subject, time, teacher ]) => {
+    return { subject, time, teacher };
+  });
+  ```
+
+---
+
+### 3.8 Classes
+
+- Class : 세상을 컴퓨터에서 표현하기 위해서 탄생
+
+- JS에는 상속이라는 개념이 없고 class라는 개념이 없다.
+
+- 하지만 class의 개념이 필요하기 때문에 JS에서도 class의 기능처럼 사용할 수 있다.
+
+- ES5에서는 prototype으로 class 기능을 대체하였으며 절대 볼 일 없는 코드로 바로 ES6의 예시를 보자.
+
+  ```js
+  class Car {
+    // 생성자 함수 
+    constructor({ title }) {
+      this.title = title;
+    }
+  
+    drive() {
+      return 'Vrooooooooooooom';
+    }
+  }
+  
+  class Audi extends Car {
+    constructor(options){
+      super(options);
+      this.color = options.color;
+    }
+  
+    honk() {
+      return 'Bammmmmmmm';
+    }
+  }
+  
+  const car = new Car({ title: 'A6'});
+  console.log(car);
+  console.log(typeof car);
+  ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
