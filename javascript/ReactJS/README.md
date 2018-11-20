@@ -343,6 +343,93 @@ componentDidMount(){
 }
 ```
 
+---
+
+### 4.4 Season Display
+
+- 현재 Month 와 Latitude 값으로 계절을 불러와보자
+
+  ```js
+  const getSeason = (month, lat) => {
+    if (month > 2 && month < 9){
+      return lat > 0 ? 'summer' : 'winter'; // ternary
+    } else {
+      return lat > 0 ? 'winter' : 'summer';
+    }
+  }
+  ```
+
+  > 삼항연산자는 영어로 **ternary** 이다.
+
+- 계절에 따라 화면을 다르게 출력하는 코드를 작성해보자
+
+  ( Semantic UI 에서 제공하는 Icon도 함께 사용해보자 )
+
+  ```js
+  const seasonConfig = {
+    summer: {
+      text: '더워요',
+      iconName: 'sun'
+    },
+    winter: {
+      text: '추워요',
+      iconName: 'snowflake'
+    }
+  }
+  
+  const SeasonDisplay = (props) => {
+    const season = getSeason(new Date().getMonth(), props.lat);
+    const { text, iconName } = seasonConfig[season];
+    return (
+      <div className={`season-display ${season}`}>
+        <i className={`icon ${iconName} massive upper-left`}/>
+        <h1>{ text }</h1>
+        <i className={`icon ${iconName} massive bottom-right`}/>
+      </div>
+    )
+  }
+  ```
+
+  > `seasonConfig` 와 같은 object를 생성해서 깔끔하게 코드를 관리하자
+
+### 4.5 Loader
+
+- 로딩화면을 Semantic UI 에서 제공하는 Loader로 이쁘게 만들어 보자.
+
+- Function based component로 만든다.
+
+- Loading 화면을 만들고 props를 통해 받은 메세지를 출력해주자.
+
+  ```js
+  export default function Spinner(props) {
+    return (
+      <div className="spinner ui active dimmer">
+        <div className="ui big text loader">
+          { props.message }
+        </div>
+      </div>
+    )
+  }
+  ```
+
+  > [로더화면 보기](https://codepen.io/fujiyamayuta/pen/JBxxJO)
+
+- `defaultProps()`
+
+  만약에 `props`에 `message` 가 넘어오지 않았을 경우 기본값을 설정 해주자.
+
+  ```js
+  Spinner.defaultProps = {
+    message: 'Loading...'
+  }
+  ```
+
+- 로딩화면에 적용하자
+
+  ```js
+  // 사용자의 허용/거부 기다리는 중..
+  return (<Spinner message={'위치 권한 허용을 기다리는 중입니다.'} />);
+  ```
 
 
 
