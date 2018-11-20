@@ -114,9 +114,29 @@
   }
   ```
 
+---
+
+### 3.2 Props
+
+- 부모 컴포넌트가 자식 컴포넌트에게 데이터를 넘겨주는 시스템
+
+- App 안에서 컴포넌트의 계층구조(Hierarchy)
+
+   > `<App />` (부모 컴포넌트 - Parent Component)
+   >
+   > - `<CommentDetail />` (자식 컴포넌트 -Child Component)
+   > - `<CommentDetail /> ` (자식 컴포넌트 -Child Component)
+   > - `<CommentDetail />` (자식 컴포넌트 -Child Component)
+
+|   Component name | prop name | prop value | -    |
+| ---------------: | :-------: | :--------: | ---- |
+| `<CommentDetail` | `author=` |  `"neo"`   | `/>` |
+
+
+
 ### 3.2 Creating Components 
 
-- 만든 Component 는 src 내부에 따로 js파일로 저장하고 재사용 한다.
+- 만든 Component 는 **src** 내부에 따로 js파일로 저장하고 재사용 한다.
 
   **CommentDetail.js**
 
@@ -175,6 +195,7 @@
   ```
 
 - 위와 같이 React 앱은 Component 들로 이루어져 있으며 몇가지 Component 의 다른 예시를 확인해보자.
+
   - 파일 전체보기 : <https://github.com/Sunjae-Kim/TIL/tree/master/javascript/ReactJS/components/src>
 
 ---
@@ -193,6 +214,8 @@
   - React 가 해당 Component의 `render()` 를 실행
   - `render()` 가 바뀐 `state`를 담은 JSX 반환
   - React가 바뀐 JSX 렌더링
+
+---
 
 ### 4.1 Geolocation API로 사용자 위치 가져오기
 
@@ -220,6 +243,8 @@
   >         > latitude: 37.5108295
   >         > ...
   > ```
+
+---
 
 ### 4.2 Class Component and State
 
@@ -290,7 +315,33 @@ if (!this.state.errorMessage && this.state.lat) {
 return (<div><p>Loading...</p></div>);
 ```
 
+---
 
+### 4.3 Component의 Life Cycle
+
+| method               | _ing            | description                                      |
+| -------------------- | --------------- | ------------------------------------------------ |
+| `constructor`        |                 | Initiate setting ( No data load..Convention )    |
+| `render`             |                 | Only return JSX                                  |
+|                      | DOM appears     |                                                  |
+| `componentDidMount`  |                 | 데이터 로드하기 좋음 ( **최초 1회** )            |
+|                      | Wait for update |                                                  |
+| `componentDidUpdate` |                 | state / props 가 **바뀔때마다** 추가 데이터 로드 |
+|                      | Wait death      |                                                  |
+| `componentWillMount` |                 | Cleanup 하기 좋음 (특히 non-react stuff)         |
+```js
+// 위도 알아오는 API로 최초 1회 호출
+componentDidMount(){
+  window.navigator.geolocation.getCurrentPosition(
+    position => {
+      this.setState({ lat: position.coords.latitude });
+    },
+    error => {
+      this.setState({ errorMessage: error.message });
+    }
+  );
+}
+```
 
 
 
