@@ -1,4 +1,6 @@
-# REACT
+# REACT Basic
+
+[TOC]
 
 ## 1. Getting Started
 
@@ -46,6 +48,8 @@
   import React from 'react'; 
   import ReactDOM from 'react-dom';
   ```
+
+---
 
 ## 2. JSX
 
@@ -170,19 +174,121 @@
   ReactDOM.render(<App />, document.querySelector("#root"));
   ```
 
+- 위와 같이 React 앱은 Component 들로 이루어져 있으며 몇가지 Component 의 다른 예시를 확인해보자.
+  - 파일 전체보기 : <https://github.com/Sunjae-Kim/TIL/tree/master/javascript/ReactJS/components/src>
+
 ---
 
 ## 4. Making Season-Checker Application
 
+- **App을 구성해보자 (Overview) **
+  - 브라우저 JS 파일 불러옴
+  - `<APP />` 컴포넌트 생성
+  - Geolocation API 가 위치정보 받기 시작
+  - React  App 이 JSX 반환하며 HTML 렌더링
+  - API의 비동기 작업을 기다림
+  - 사용자 위치정보 GET
+  - state 객체를 `this.setState()` 로 update
+  - React 가 Component 의 update를 알아차림
+  - React 가 해당 Component의 `render()` 를 실행
+  - `render()` 가 바뀐 `state`를 담은 JSX 반환
+  - React가 바뀐 JSX 렌더링
 
+### 4.1 Geolocation API로 사용자 위치 가져오기
 
+- Browser console에서 `window.navigator.geolocation.getCurrentPosition()` 함수로 사용자 기준으로  현재 위치를 확인할 수 있다.
 
+- **index.js** 의 App 안에서 Callback 함수로 실행해보자.
 
+  ```js
+    window.navigator.geolocation.getCurrentPosition( 
+      position => console.log(position),
+      error => console.log(error)
+    );
+  ```
 
+- 앱을 시작을 하면 다음과 같은 알림이 나오게 된다.
 
+  ![위치정보확인](https://www.clockspot.com/support/wp-content/uploads/2016/01/screen19.png)
 
+  > Allow 결과 :
+  >
+  > ```js
+  > > Position {coords: Coordinates, timestamp: 1542677899743}
+  > 	> coords: Coordinates
+  >     	> ...
+  >         > latitude: 37.5108295
+  >         > ...
+  > ```
 
+### 4.2 Class Component and State
 
+- class component에서만 사용이 가능하다.
+  - class 라는 객체이기 때문에 state 말그대로 상태를 정의하는게 가능하다.
+
+- state에 조금이라도 변화가 있으면 자동으로 다시 rendering이 일어난다.
+- component 가 만들어진 뒤에 state 는 초기화가 일어난다.
+- set-state를 통해서만 state의 update가 가능하다.
+
+#### Class Component
+
+```js
+class App extends React.Component {
+  constructor(props) {
+    super(props); 		// 상속받은 객체는 필수적
+    this.state = {		// state의 초기화
+      
+      lat: null,
+      errorMessage: ""
+    };
+    
+    // 시작할 때 최초 1회만 실행이 되며 render시 매번 실행되지 않음
+    window.navigator.geolocation.getCurrentPosition(
+      position => {
+        this.setState({ lat: position.coords.latitude });
+      },
+      error => {
+        this.setState({ errorMessage: error.message });
+      }
+    );
+  }
+
+  render() {
+    
+    return (
+      <Fragment>
+        <div>
+          <p>위도(latitude): {this.state.lat}</p>
+          <p>Error: { this.state.errorMessage }</p>
+        </div>
+      </Fragment>
+    );
+  }
+}
+```
+
+#### State에 따른 분기
+
+| Lat  | Error |   Response    |
+| :--: | :---: | :-----------: |
+|  O   |   X   | Show Latitude |
+|  X   |   O   |  Show Error   |
+|  X   |   X   |   Loading..   |
+
+```js
+// 사용자 거부 시
+if (this.state.errorMessage && !this.state.lat) {
+    return (<div><p>Error: {this.state.errorMessage}</p></div>);
+}
+
+// 사용자 허용 시
+if (!this.state.errorMessage && this.state.lat) {
+    return (<div><p>위도(latitude): {this.state.lat}</p></div>);
+}
+
+// 사용자의 허용/거부 기다리는 중..
+return (<div><p>Loading...</p></div>);
+```
 
 
 
