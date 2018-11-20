@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import SeasonDisplay from "./SeasonDisplay";
 import Spinner from "./Spinner";
+import Error from "./Error";
 
 class App extends React.Component {
   
@@ -14,7 +15,7 @@ class App extends React.Component {
   renderContent(){
     // 사용자 거부 시
     if (this.state.errorMessage && !this.state.lat) {
-      return (<div><p>Error: {this.state.errorMessage}</p></div>);
+      return (<Error message={'위치 권한 허용이 차단되었습니다.'} />);
     }
 
     // 사용자 허용 시
@@ -28,7 +29,7 @@ class App extends React.Component {
 
   render() {
     return(
-      <div style={{border: 'solid red 10px'}}>
+      <div>
         { this.renderContent() }
       </div>
     )

@@ -1,0 +1,12 @@
+.my_error {
+  background-color: darkgray;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.my_error p {
+  
+}
