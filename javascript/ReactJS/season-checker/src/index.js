@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import SeasonDisplay from "./SeasonDisplay";
+import Spinner from "./Spinner";
 
 class App extends React.Component {
   
@@ -10,7 +11,7 @@ class App extends React.Component {
     errorMessage: ""
   };
 
-  render() {
+  renderContent(){
     // 사용자 거부 시
     if (this.state.errorMessage && !this.state.lat) {
       return (<div><p>Error: {this.state.errorMessage}</p></div>);
@@ -22,7 +23,15 @@ class App extends React.Component {
     }
 
     // 사용자의 허용/거부 기다리는 중..
-    return (<div><p>Loading</p></div>);
+    return (<Spinner message={'위치 권한 허용을 기다리는 중입니다.'} />);
+  }
+
+  render() {
+    return(
+      <div style={{border: 'solid red 10px'}}>
+        { this.renderContent() }
+      </div>
+    )
   }
 
 
