@@ -1,6 +1,9 @@
 # REACT
 
-## 1. Install
+## 1. Getting Started
+
+### 1.1 Installation
+
 
 - `$ npx create-react-app jsx` 으로 react 프로젝트를 `jsx`이름으로 만들어주자
 
@@ -27,9 +30,7 @@
   > Note that the development build is not optimized.
   > To create a production build, use npm run build.
 
-## 2. Getting Started
-
-### 2.1 Import
+### 1.2 Import
 
 - React에서는 ES6에서 지원하는 방식의 module import 를 쓴다.
 
@@ -46,7 +47,41 @@
   import ReactDOM from 'react-dom';
   ```
 
-### 2.2 Component
+## 2. JSX
+
+- JSX 는 HTML을 손쉽게 만들어 주기 위한 언어로 JS이지만 브라우저에서는 직접 지원되지 않는다.
+
+- JSX 는 BABEL Complier를 통해서 자동 compling 이 되어 HTML처럼 작성하면 알아서 `createElement()` 함수를 사용하여 HTML을 만들어 준다.
+
+  ```js
+  const App = () => {
+    const buttonText = 'Click';
+    return (
+    <div>
+      <h3>{ new Date().toLocaleTimeString() }</h3>
+      <label htmlFor="name" className="name_label">Enter name: </label>
+      <input type="text" id="name" />
+      <button style={{ backgroundColor: 'blue', color: 'white', border: 'solid 1px black' }}>
+        { buttonText }
+      </button>
+    </div>
+    )
+  }
+  ```
+
+  > 딱봐도 처음보는기괴한 이상한 문법이다. 아래에서 자세하게 알아보도록 하자.
+
+### 2.1 JSX 문법
+
+- Styling을 할 땐 `-` 기호는 지우고 CamelCase로 작성하도록 하자.
+
+- class이름은 `className` 을 통해서 준다. ( 비슷하게 HTML의 `for` 를 `htmlFor` 라고 정의한다. )
+- JS변수를 `{ }` 내부에서 사용할 수 있다.
+- 구분을 위해 JS에서는 `''` 를 사용하고, HTML내에서는 `""` 를 사용하자.
+
+## 3. Component
+
+### 2.1 Basic
 
 - React 는 Component 들의 모음으로 이루어져 있다고 생각해도 된다.
 
@@ -74,19 +109,7 @@
   }
   ```
 
-### 2.3 DOM
 
-- 이제 Component를 render해보자
-
-  ```js
-  ReactDOM.render(
-    <App />,
-    document.querySelector('#root')
-  )
-  ```
-
-
-## 3. Components
 
 - 만든 Component 는 src 내부에 따로 js파일로 저장한다**.**
 

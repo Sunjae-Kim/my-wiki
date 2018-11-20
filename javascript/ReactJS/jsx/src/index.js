@@ -19,14 +19,14 @@ import ReactDOM from 'react-dom';
     - JS 영역에서는 ''
 */
 function getTime() {
-  return (new Date()).toLocaleTimeString();
+  return ;
 }
 
 const App = () => {
   const buttonText = 'Click';
   return (
   <div>
-    <h3>{ getTime() }</h3>
+    <h3>{ new Date().toLocaleTimeString() }</h3>
     <label htmlFor="name" className="name_label">Enter name: </label>
     <input type="text" id="name" />
     <button style={{ backgroundColor: 'blue', color: 'white', border: 'solid 1px black' }}>
