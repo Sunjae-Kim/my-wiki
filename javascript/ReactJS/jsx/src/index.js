@@ -18,9 +18,6 @@ import ReactDOM from 'react-dom';
     - HTML 영역에서는 ""
     - JS 영역에서는 ''
 */
-function getTime() {
-  return ;
-}
 
 const App = () => {
   const buttonText = 'Click';

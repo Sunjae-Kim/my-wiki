@@ -5,7 +5,7 @@
 ### 1.1 Installation
 
 
-- `$ npx create-react-app jsx` 으로 react 프로젝트를 `jsx`이름으로 만들어주자
+- `$ npx create-react-app <app name>` 으로 react 프로젝트를 `jsx`이름으로 만들어주자
 
   > global option 으로 `create-react-app` 을 깐 다음에 언제나 사용할 수 있지만 `npx` 명령어로 1회용으로 깔아서 사용할 수 있기 때문에 package를 굳이 깔지 않아도 된다.
 
@@ -74,14 +74,15 @@
 ### 2.1 JSX 문법
 
 - Styling을 할 땐 `-` 기호는 지우고 CamelCase로 작성하도록 하자.
-
 - class이름은 `className` 을 통해서 준다. ( 비슷하게 HTML의 `for` 를 `htmlFor` 라고 정의한다. )
 - JS변수를 `{ }` 내부에서 사용할 수 있다.
 - 구분을 위해 JS에서는 `''` 를 사용하고, HTML내에서는 `""` 를 사용하자.
 
+---
+
 ## 3. Component
 
-### 2.1 Basic
+### 3.1 Basic
 
 - React 는 Component 들의 모음으로 이루어져 있다고 생각해도 된다.
 
@@ -109,9 +110,9 @@
   }
   ```
 
+### 3.2 Creating Components 
 
-
-- 만든 Component 는 src 내부에 따로 js파일로 저장한다**.**
+- 만든 Component 는 src 내부에 따로 js파일로 저장하고 재사용 한다.
 
   **CommentDetail.js**
 
@@ -168,5 +169,42 @@
   
   ReactDOM.render(<App />, document.querySelector("#root"));
   ```
+
+---
+
+## 4. Making Season-Checker Application
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
