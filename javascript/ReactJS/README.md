@@ -431,9 +431,42 @@ componentDidMount(){
   return (<Spinner message={'위치 권한 허용을 기다리는 중입니다.'} />);
   ```
 
+---
 
+## 5. Search Picture
 
+### 5.1 Controlled Element 
 
+- 기존의 input tag에서는 사용자의 typing을 value로 확인하였다.
+
+- 이번에는 사용자의 typing을 event로 받은뒤 state에 setting 하고 input의 value로 우리가 setting한 state의 값을 보여주는 방식을 써보자
+
+  ```js
+  class SearchBar extends Component {
+  
+    state = {
+      keyword: ''
+    }
+  
+    render() {
+      return (
+        <div className="ui segment container">
+          <form className="ui form">
+            <label htmlFor="keyword">Search</label>
+            <input 
+            type="text" 
+            id="keyword"
+            onChange={e => this.setState({ keyword: e.target.value.toUpperCase })}
+            value={this.state.keyword}
+            />
+          </form>
+        </div>
+      )
+    }
+  }
+  ```
+
+  > `state` 가 업데이트 되면서 실시간으로 `render()` 가 수행되며 `input` 내부 `value`의 `state` 값을 사용자가 보게된다.
 
 
 
