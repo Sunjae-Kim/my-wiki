@@ -1,11 +1,28 @@
 import React, { Component } from 'react'
 
-
-
 class SearchBar extends Component {
 
   state = {
     keyword: ''
+  }
+
+  badword = 'fuck';
+
+  removeBadWords = (word) => {
+
+    const result = word.indexOf(this.badword.toLocaleUpperCase());
+    this.setState({ keyword: word }, () => {
+      result > -1 ? this.setState({ keyword: this.state.keyword.replace(/fuck/i, '****') }) : this.setState({ keyword: word });
+    })
+
+  }
+
+  componentDidUpdate(){
+  }
+
+  onFormSubmit = (event) => {
+    event.preventDefault();
+    this.props.onUserSubmit(this.state.keyword)
   }
 
   /*
@@ -17,13 +34,13 @@ class SearchBar extends Component {
   render() {
     return (
       <div className="ui segment container">
-        <form className="ui form">
+        <form onSubmit={ this.onFormSubmit } className="ui form">
           <label htmlFor="keyword">Search</label>
           <input 
           type="text" 
           id="keyword"
-          onChange={e => this.setState({ keyword: e.target.value.toUpperCase })}
-          value={this.state.keyword}
+          onChange={e => this.removeBadWords(e.target.value) }
+          value={ this.state.keyword }
           />
         </form>
       </div>
