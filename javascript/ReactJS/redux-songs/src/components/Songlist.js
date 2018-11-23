@@ -12,6 +12,7 @@ class Songlist extends Component {
   }
 
   renderList(){
+    console.log(this.props);
     return this.props.songs.map(song => {
       return(
         <div key={ song.title } className="item">

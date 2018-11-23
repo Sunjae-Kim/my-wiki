@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 const Songdetail = ({song}) => {
   return (
     <div>
+      <h1>Details</h1>
       { renderSongDetail(song) }
     </div>
   )
