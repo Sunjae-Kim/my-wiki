@@ -25,3 +25,59 @@
 - 데이터를 다시 데이터 저장소에 저장한다.
 - 자세한 예시 코드 [Link](https://github.com/Sunjae-Kim/TIL/tree/master/javascript/ReactJS/redux/src/example.js)
 
+- 실제 코드에서는 `<Provider />` 가 `store` 의 모든 데이터를 받은 뒤 `<Connect />` 를 통해서 각 Component들에게 데이터를 전달하게 된다.
+
+  덕분에 가장 안쪽에 있는 component도 부모 의 부모 component를 통해 데이터를 전달 받지 않아도 되며 `<Connect />` 를 통해서 바로 전달 받을 수 있게 된다.
+
+## 2. Practice
+
+### 2.1 Setting
+
+- **Installation**
+
+  ```bash
+  $ npm install redux react-redux
+  ```
+
+  > 2개의 module을 설치하자.
+
+- index.html에 **semantic-ui  CDN**을 붙여서 깔끔한 UI를 만들어보자.
+
+  ```html 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  ```
+
+- src 안에 actions, components, reducers 디렉토리를 생성하자.
+
+- **src/index.js** 에서 redux setting을 하게 된다.
+
+  ```js
+  
+  ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
