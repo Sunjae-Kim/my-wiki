@@ -87,8 +87,8 @@
   ```js
   export const selectSong = song => {
     return {
-      type: 'SONG_SELECTED',
-      payload: song,
+      type: 'SONG_SELECTED', // 전체 대문자에 '_' 구분은 convention이다.
+      payload: song, // 선택된 Song을 저장하는 공간에 song을 저장하도록 한다.
     }; 
   }
   ```
@@ -97,9 +97,64 @@
   >
   > `import { <function> } from '</directory>';` 형식의 호출이 가능하다.
 
+---
 
+### 2.3 Reducer
 
+- **songsReducer**
 
+  Database를 연동하지 않았음으로 Database에서 음악을 전체 불러오는 듯한 느낌을 주는 reducer 1개를 생성한다.
+
+  ```js
+  import { combineReducers } from 'redux';
+  
+  // 가지고 있는 모든 song 모두를 그대로 전달만 하는 reducer
+  const songsReducer = () => {
+    return [
+      { title: 'lo-fi', artist: 'under', duration: '2:12' },
+      { title: 'hiphop', artist: 'rapper', duration: '3:30' },
+      { title: 'beat', artist: 'loptimist', duration: '4:12' },
+    ];
+  };
+  ```
+
+  > 전체 곡을 가지고 있는 reducer이며 전체를 전달하는 업무만 한다.
+
+- **selectedSongReducer**
+
+  위에 불러온 list에서 1개의 song을 선택하고 선택된 song을 store의 "1개의 선택된 song을 담는 공간" 에 저장을 하는 reducer를 생성하자.
+
+  ```js
+  // 1개의 노래만 저장하고 전달하는 reducer
+  const selectedSongReducer = (selectedSong=null, action) => {
+    if(action.type === 'SONG_SELECTED') { // action에서 정의한 type에 일치하는지 확인한다.
+      return action.payload	// 맞으면 담아온 song을 저장한다.
+    } else {
+      return selectedSong;
+    } 
+  };
+  ```
+
+- **combineReducers**
+
+  모든 reducer를 매개변수로 받아서 **store**라는 저장고를 생성하여 모든 component에게 `<Connect />`로 접근을 가능하게 `export` 해준다.
+
+  ```js
+  export default combineReducers({
+    songs: songsReducer,
+    selectedSong: selectedSongReducer
+  });
+  ```
+
+---
+
+### 2.4 Songlist.js
+
+- 
+
+### 2.5 Songdetail.js
+
+- 
 
 
 
