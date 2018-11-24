@@ -216,6 +216,8 @@
   - **`rederList()`** : `props` 객체에 저장이 된 songs를 iterator를 통해서 조회하며 각 원소별 정보를 통해 row를 만들어 listing하도록 한다. store에 저장되는 모든 정보들은 각각이 유니크한 **key** 값이 필요하기 때문에 1개의 정보의 최상단 markup에 **key option** 을 줘야한다.
   - **`selectSong()`** : `renderList()` 내부에 `onClick` 이벤트에 선언을 했으며 song을 매개변수로 넘겨줘서 해당 row에서 play 버튼을 누르면 그 song이 store에 저장이 되도록 구현이 되었다.
 
+---
+
 ### 2.5 Songdetail.js
 
 - `Songlist.js` 에서 만든 리스트에서 Play 버튼을 클릭했을 때 선택된 노래의 정보를 출력해보자.
