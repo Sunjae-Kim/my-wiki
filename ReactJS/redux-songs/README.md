@@ -1,6 +1,13 @@
 # Redux
-
-[TOC]
+- [1. Getting Started](#1-getting-started)
+  - [1.1 개요](#11-%EA%B0%9C%EC%9A%94)
+  - [1.2 예시](#12-%EC%98%88%EC%8B%9C)
+- [2. Practice](#2-practice)
+  - [2.1 Setting](#21-setting)
+  - [2.2 Action](#22-action)
+  - [2.3 Reducer](#23-reducer)
+  - [2.4 Songlist.js](#24-songlistjs)
+  - [2.5 Songdetail.js](#25-songdetailjs)
 
 ## 1. Getting Started
 
@@ -150,11 +157,104 @@
 
 ### 2.4 Songlist.js
 
-- 
+- 위의 **songsReducer** 를 통해서 모든 데이터를 불러온 뒤 listing 하는 component를 만들어 보자.
+
+  ```js
+  import React, { Component } from 'react'
+  import { connect } from 'react-redux'
+  import { selectSong } from '../actions'
+  
+  class Songlist extends Component {
+    render() {
+      return (
+        <div className="ui divided list">
+          { this.renderList() }
+        </div>
+      )
+    }
+  
+    renderList(){
+      console.log(this.props);
+      return this.props.songs.map(song => {
+        return(
+          <div key={ song.title } className="item">
+            <div className="content">
+              { song.title }
+            </div>
+            <div className="right float content">
+              <button 
+                className="ui button primary"
+                onClick={ () => this.props.selectSong(song) }
+              >
+                Play
+              </button>
+            </div>
+          </div>
+        )
+      })
+    }
+  }
+  
+  // 함수이름 convention
+  const mapStateToProps = state => {
+    // state의 변화가 일어날 시 반드시 수행이 된다.
+    console.log(state);
+    return {
+      songs : state.songs
+    }
+  }
+  
+  export default connect(
+    mapStateToProps,
+    { selectSong }
+    )(Songlist);
+  ```
+
+  - **`render()`** : 렌더링 하는 함수의 return 부분은 정말 깔끔하게 코딩을 하는게 좋다. 그래서 `renderList()` 함수를 만들어서 긴 markup을 생성한 뒤 `render()` 내부에서 반환하도록 디자인을 한다.
+  - **`mapStateToProps()`** : 함수이름이 직관적으로 기능을 설명한다. store에 있는 state 값을 `combineReducers()` 를 통해 저장을 하고 있는 상황이다. 해당 함수로 state에 저장된 값을 현재 component의 `props` 에 저장을 하겠다는 뜻이다. `songs` 가 필요하므로 `songs` 만 불러와서 props에 담아두도록 하자.
+  - **`connect()()`** : 첫번째 함수의 첫번째 매개변수로 위에 선언한 `mapStateToProps()` 를 넣는다. 두번째 매개변수로는 현재 component에서 수행할 action을 object 내부에 적는다. 두번째 함수의 매개변수로는 현재 component 객체를 적도록 하자. 그럼 redux를 통해서 정보를 주고받을 준비가 완료되었다.
+  - **`rederList()`** : `props` 객체에 저장이 된 songs를 iterator를 통해서 조회하며 각 원소별 정보를 통해 row를 만들어 listing하도록 한다. store에 저장되는 모든 정보들은 각각이 유니크한 **key** 값이 필요하기 때문에 1개의 정보의 최상단 markup에 **key option** 을 줘야한다.
+  - **`selectSong()`** : `renderList()` 내부에 `onClick` 이벤트에 선언을 했으며 song을 매개변수로 넘겨줘서 해당 row에서 play 버튼을 누르면 그 song이 store에 저장이 되도록 구현이 되었다.
 
 ### 2.5 Songdetail.js
 
-- 
+- `Songlist.js` 에서 만든 리스트에서 Play 버튼을 클릭했을 때 선택된 노래의 정보를 출력해보자.
+
+  ```js
+  import React from 'react'
+  import { connect } from 'react-redux'
+  
+  const Songdetail = ({song}) => {
+    return (
+      <div>
+        <h1>Details</h1>
+        { renderSongDetail(song) }
+      </div>
+    )
+  }
+  
+  const renderSongDetail = song => {
+    if(!song){
+      return (<div>select a song!</div>)
+    } else {
+      return Object.keys(song).map( key => {
+        return (
+          <p key={key} > { key } : { song[key] } </p>
+        )
+      })
+    }
+  }
+  
+  const mapStateToProps = state => {
+    return {
+      song : state.selectedSong
+    }
+  }
+  
+  export default connect(mapStateToProps)(Songdetail);
+  ```
+
+  - Click event가 발생하여 store에 있는 `selectedSong` 이 바뀌게 되면 state가 바뀌는 개념으로 실시간으로 rendering이 다시 발생한다. 그러므로 `Songdetail.js` 의 내용은 click event가 발생 될때마다 실시간으로 변하게 된다.
 
 
 
