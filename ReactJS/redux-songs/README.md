@@ -25,7 +25,7 @@
 - 데이터를 다시 데이터 저장소에 저장한다.
 - 자세한 예시 코드 [Link](https://github.com/Sunjae-Kim/TIL/tree/master/javascript/ReactJS/redux/src/example.js)
 
-- 실제 코드에서는 `<Provider />` 가 `store` 의 모든 데이터를 받은 뒤 `<Connect />` 를 통해서 각 Component들에게 데이터를 전달하게 된다.
+- 실제 코드에서는 react-redux의 `<Provider />` 가  redux의 `store` 의 모든 데이터를 받은 뒤 react-redex의 `<Connect />` 를 통해서 각 react component들에게 데이터를 전달하게 된다.
 
   덕분에 가장 안쪽에 있는 component도 부모 의 부모 component를 통해 데이터를 전달 받지 않아도 되며 `<Connect />` 를 통해서 바로 전달 받을 수 있게 된다.
 
@@ -39,7 +39,7 @@
   $ npm install redux react-redux
   ```
 
-  > 2개의 module을 설치하자.
+  > 2개의 module을 설치하자. 
 
 - index.html에 **semantic-ui  CDN**을 붙여서 깔끔한 UI를 만들어보자.
 
@@ -52,12 +52,50 @@
 - **src/index.js** 에서 redux setting을 하게 된다.
 
   ```js
+  import React from 'react';
+  import ReactDOM from 'react-dom';
   
+  // 패키지 및 모듈
+  import { Provider } from 'react-redux';
+  import { createStore } from 'redux';
+  
+  // 내가 작성한 코드
+  import App from './components/App';
+  import reducers from './reducers'; // folder의 index.js 에서 찾는다.
+  
+  /* 
+    Rendering 과정
+    redux에게 받아오는 모든 데이터를 store라고 정의를 하고
+    모든 component에게 props를 통해 접근 가능하도록 정의한다.
+  */
+  ReactDOM.render(
+    <Provider store={ createStore(reducers) }>
+      <App />
+    </Provider>, 
+    document.querySelector('#root')
+  )
   ```
 
+---
 
+### 2.2 Action
 
+- 어떤일을 할 것인가를 발행하여 store에 내용을 저장할 함수를 만들어보자.
 
+- Action Creator가 Action을 반환하는 코드를 만들어 볼 것이다.
+
+  ```js
+  export const selectSong = song => {
+    return {
+      type: 'SONG_SELECTED',
+      payload: song,
+    }; 
+  }
+  ```
+
+  > `export <function>` : 해당 export 방식은 **named export** 방식으로 다른 곳에서 
+  >
+  > `import { <function> } from '</directory>';` 형식의 호출이 가능하다.
 
 
 
