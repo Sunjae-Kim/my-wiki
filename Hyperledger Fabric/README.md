@@ -33,8 +33,11 @@
 ![reson](https://image.slidesharecdn.com/blockchain-hyerledger-fabricv02-180323071019/95/blockchain-hyperledger-fabric-3-638.jpg)
 
 - 제 3의 심판을 통해서 모든 활동을 Tracking이 필요한 Business Model들이 필요하기 때문
-- 사업 근간의 형태를 구축하는데 좋다
+
+![compare](https://cdn-images-1.medium.com/max/639/1*JehyCna7NXyS-w-UYDpSdA.jpeg)
+
 - 시스템을 구축하는것 보다 모두가 동의할 수 있는 합의체를 만드는 목적
+- 사업 근간의 형태를 구축하는데 좋다.
 
 ---
 
@@ -62,3 +65,63 @@
 
 ---
 
+### 구성요소
+
+- Assets : 거래의 기반이 되는 가치의 상태 (state)
+- Chaincode :  State의 변화를 주는 비지니스 로직
+
+- Privacy : Channel을 통한 서브넷
+- Ledger: Asset State의 변화 내역의 기록
+- Consensus: 네트워크 내의 peer간의 동일한 Ledger & State를 공유하는 방법
+- Security & MSP: 
+
+![](https://image.slidesharecdn.com/blockchain-hyerledger-fabricbangkokv05-180404044852/95/blockchain-hyper-ledger-fabric-bangkok-conference-13-638.jpg)
+
+---
+
+### Hyperledger Composer Playground
+
+- Link: <https://composer-playground.mybluemix.net>
+
+- 하이퍼레저의 네트워크를 자동으로 생성해주며 네트워크에서 DApp을 구축하기 위한 모든 환경이 세팅되어 있는 Tool 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+참고 : <https://github.com/djohnkang/hlf_vagrant_devenv>
