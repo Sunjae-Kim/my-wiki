@@ -2,7 +2,7 @@
 
 ## What is Git?
 
-### VCS(Version Controll System) / SCM(Source Code Manager)
+### VCS(Version Control System) / SCM(Source Code Manager)
 
 | Command                                    | Description                                       |
 | ------------------------------------------ | ------------------------------------------------- |
