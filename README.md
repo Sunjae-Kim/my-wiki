@@ -10,8 +10,9 @@
    - [Vanila Javascript](https://github.com/Sunjae-Kim/TIL/tree/master/javascript/VanilaJS)
  - [MongoDB](https://github.com/Sunjae-Kim/TIL/tree/master/MongoDB)
  - [ReactJS](https://github.com/Sunjae-Kim/TIL/tree/master/ReactJS/)
- - [Ethereum](https://github.com/Sunjae-Kim/TIL/tree/master/Ethereum/note)
- - [Hyperledger Fabric](https://github.com/Sunjae-Kim/TIL/tree/master/Hyperledger-Fabric)
+ - [Blockchain](https://github.com/Sunjae-Kim/TIL/tree/master/Blockchain)
+   - [Ethereum](https://github.com/Sunjae-Kim/TIL/tree/master/Blockchain/Ethereum/note)
+   - [Hyperledger Fabric](https://github.com/Sunjae-Kim/TIL/tree/master/Blockchain/Hyperledger-Fabric)
 
 
 ### Git
@@ -42,8 +43,8 @@
 
 ### Blockchain
 
->- [Ethereum DApp demo](https://github.com/Sunjae-Kim/TIL/tree/master/Ethereum/note)
->- [Hyperledger Fabric](https://github.com/Sunjae-Kim/TIL/tree/master/Hyperledger-Fabric)
+>- [Ethereum DApp demo](https://github.com/Sunjae-Kim/TIL/tree/master/Blockchain/Ethereum/note)
+>- [Hyperledger Fabric](https://github.com/Sunjae-Kim/TIL/tree/master/Blockchain/Hyperledger-Fabric)
 
 
 ## License
