@@ -1,0 +1,65 @@
+# Scope
+
+모든 binding 에는 **scope** 가 존재한다. function 혹은 block 의 밖에서 선언되는 binding 들의 scope 는 프로그램 전체에 해당되는데 이를 **global scope** 라고 한다.
+
+반면에 함수의 매개변수로 선언되거나 혹은 함수 body 내에서 선언되는 함수는 해당 함수 내에서만 참조할 수 있으며 이는 **local binding ** 이라고 부른다. 함수가 매번 호출될 때마다 새로운 local binding 들이 생성이 되며 이는 같은 함수가 호출이 되더라도 해당 함수만의 고유 binding 으로 독립적으로 존재한다.
+
+`let` 과 `const` 로 선언된 바인딩은 해당 바인딩이 선언된 **블록**에 대해서 local binding 이기 때문에, 반복문을 작성한다고 한다면 반복문 내부에서 바인딩 하나를 생성하면 반복문 전후의 코드가 이를 볼 수 없다. 2015년 이전 JS 에서는 함수만이 새로운 scope 를 만들 수 있었고 블록 단위의 스코프가 없었기 때문에, `var` 키워드로 만든 이전 방식의 binding 은 모든 함수, 또는 함수에 없는 경우 글로벌 범위에서 볼 수 있었다.
+
+```js
+let x = 10;
+if (true) {
+  let y = 20;
+  var z = 30;
+  console.log(x + y + z);
+  // → 60
+}
+// y is not visible here
+console.log(x + z);
+// → 40
+```
+
+scope 는 주변의 scope 를 '관찰' 할 수 있다. 만약 동일한 이름의 여러개의 binding 이 있다면 어떻게 될까? 이 경우에는 가장 안쪽에 있는 binding 을 인식하게 된다. 아래의 예시를 살펴보자.
+
+```js
+const halve = function(n) {
+  return n / 2;
+};
+
+let n = 10;
+console.log(halve(100));
+// → 50
+console.log(n);
+// → 10
+```
+
+> global `n` 이 선언이 됐어도 매개변수로 받은 `n` 이 가장 안쪽의 scope 이기 때문에 `halve` 의 반환 값은 매개변수로 받은 `n` 을 계산한 값이 된다.
+
+<br>
+
+JS 는 글로벌 바인딩과 로컬 바인딩만 구별하지 않는다. 블록과 함수는 다른 블록과 함수 안에서 생성될 수 있으며, 여러번 nesting 이 발생할 수 있다.
+
+아래의 예시를 살펴보자 :
+
+```js
+const hummus = function(factor) {
+  const ingredient = function(amount, unit, name) {
+    let ingredientAmount = amount * factor;
+    if (ingredientAmount > 1) {
+      unit += "s";
+    }
+    console.log(`${ingredientAmount} ${unit} ${name}`);
+  };
+  ingredient(1, "can", "chickpeas");
+  ingredient(0.25, "cup", "tahini");
+  ingredient(0.25, "cup", "lemon juice");
+  ingredient(1, "clove", "garlic");
+  ingredient(2, "tablespoon", "olive oil");
+  ingredient(0.5, "teaspoon", "cumin");
+};
+```
+
+`ingredient` 함수에서 외부에서 호출된 `hummus` 의 매개변수를 사용하는 모습을 볼 수 있다. 그러나 해당 함수의 local binding 들은 외부에서 호출된 함수에서는 볼 수 없다.
+
+Block 안에서 볼 수 있는 binding 의 집합은 프로그램 텍스트에서 해당 블록 위치에 따라 결정된다. 각 local scope 는 이를 포함하는 모든 local scope 도 볼 수 있으며, 모든 scope 는 global scope 를 볼 수 있다. 이러한 형태로 binding 의 가시성에 접근하는것을 **lexical scoping** 이라고 한다.
+
