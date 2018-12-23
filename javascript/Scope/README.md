@@ -63,3 +63,71 @@ const hummus = function(factor) {
 
 Block 안에서 볼 수 있는 binding 의 집합은 프로그램 텍스트에서 해당 블록 위치에 따라 결정된다. 각 local scope 는 이를 포함하는 모든 local scope 도 볼 수 있으며, 모든 scope 는 global scope 를 볼 수 있다. 이러한 형태로 binding 의 가시성에 접근하는것을 **lexical scoping** 이라고 한다.
 
+<br>
+
+아래 코드로 흔히 실수할 수 있는 scope 문제의 예시를 살펴보자 :
+
+```js
+function addEventHandler() {
+	  var box = document.getElementsByClassName("box");
+	  for (var i = 0; i < box.length; i++) {
+	    var ingredient = elTweet[i].getElementsByClassName("ingredient");
+	    ingredient[0].onclick = function() {
+	      var ingredientName = ingredient[0].innerHTML;
+	      filterByName(ingredientName);
+	    };
+	  }
+	}
+```
+
+해당 함수의 경우에는 모든 ingredient 에 `onclick` 함수가 생기고 난 다음 모든 ingredient에서  `onclick` 이벤트가 발생될 때 항상 box 의 마지막 index 에 있는 ingredient 의 이름으로 분류가 될 것이다. 그 이유는 scope 의 문제인데 `var` 는 함수단위 scope 로 어느 index 에서 `onclick` 이벤트가 발생 되더라도 항상 마지막으로 선언된 `var ingredient` 의 `innerHTML` 속성을 취하게 된다. 이러한 문제를 해결하는 방법은 세가지 정도가 있다.
+
+1. block 단위 scope 로 바꾸어져서 for loop 가 돌아가는 매 순간마다 새로운 `ingredient` 가 생성되게 하는 법
+2. IIFE (즉시 실행 함수) 를 사용하여 함수가 선언됨가 동시에 실행을 시켜 모든 `ingredient` 를 즉시 실행되는 함수의 scope 로 생성되게 하는 법
+3. `ingredient` 를 생성하고 `onclick` event 를 부여하는 함수를 따로 만들어서 for loop 안에서 호출하는 법
+
+아래에서 위 3가지 방법에 대한 코드를 확인해보자.
+
+1. ```js
+   function addEventHandler() {
+   	  var box = document.getElementsByClassName("box");
+   	  for (var i = 0; i < box.length; i++) {
+   	    let ingredient = box[i].getElementsByClassName("ingredient");
+   	    ingredient[0].onclick = function() {
+   	      var ingredientName = ingredient[0].innerHTML;
+   	      filterByName(ingredientName);
+   	    };
+   	  }
+   }
+   ```
+
+2. ```js
+   function addEventHandler() {
+   	  var box = document.getElementsByClassName("box");
+   	  for (var i = 0; i < box.length; i++) {
+           (function() {
+   	      var ingredient = box[i].getElementsByClassName("ingredient");
+   	      ingredient[0].onclick = function() {
+   	        var ingredientName = ingredient[0].innerHTML;
+   	        filterByName(ingredientName);
+   	      };
+           })();
+   	  }
+   }
+   ```
+
+3. ```js
+   function addEventHandler() {
+   	  var box = document.getElementsByClassName("box");
+   	  for (var i = 0; i < box.length; i++) {
+           addOnClickEvent(box[i].getElementsByClassName("ingredient"))
+   	  }
+   }
+   
+   function addOnClickEvent(ingredient) {
+   	  ingredient[0].onclick = function() {
+   	        var ingredientName = ingredient[0].innerHTML;
+   	        filterByName(ingredientName);
+         };
+   }
+   ```
