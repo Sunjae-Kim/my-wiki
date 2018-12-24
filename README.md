@@ -28,6 +28,8 @@
 > - [Express: 3. Using local JSON file as a Database](https://github.com/Sunjae-Kim/TIL/blob/master/javascript/Express/3.Express-basic-practice)
 > - [Javascript: Giphy Search Engine](https://github.com/Sunjae-Kim/TIL/tree/master/javascript/VanilaJS/giphy-search-engine)
 > - [Javascript: Sound Cloud Player](https://github.com/Sunjae-Kim/TIL/tree/master/javascript/VanilaJS/sound-cloud-player)
+> - [Javascript: Scope](https://github.com/Sunjae-Kim/TIL/tree/master/javascript/Scope)
+> - [Javascript: Sync-Async](https://github.com/Sunjae-Kim/TIL/tree/master/javascript/Sync-Async)
 > - [Node.js: Getting started](https://github.com/Sunjae-Kim/TIL/blob/master/javascript/Nodejs/Nodejs-get-started)
 > - [Node.js: NPM(Node Package Manager)](https://github.com/Sunjae-Kim/TIL/blob/master/javascript/Nodejs/NPM)
 
