@@ -37,6 +37,8 @@ console.log(n);
 
 <br>
 
+## Nesting Scope
+
 JS 는 글로벌 바인딩과 로컬 바인딩만 구별하지 않는다. 블록과 함수는 다른 블록과 함수 안에서 생성될 수 있으며, 여러번 nesting 이 발생할 수 있다.
 
 아래의 예시를 살펴보자 :
@@ -64,6 +66,8 @@ const hummus = function(factor) {
 Block 안에서 볼 수 있는 binding 의 집합은 프로그램 텍스트에서 해당 블록 위치에 따라 결정된다. 각 local scope 는 이를 포함하는 모든 local scope 도 볼 수 있으며, 모든 scope 는 global scope 를 볼 수 있다. 이러한 형태로 binding 의 가시성에 접근하는것을 **lexical scoping** 이라고 한다.
 
 <br>
+
+## Examples
 
 아래 코드로 흔히 실수할 수 있는 scope 문제의 예시를 살펴보자 :
 
@@ -131,3 +135,47 @@ function addEventHandler() {
          };
    }
    ```
+
+<br>
+
+## Lexical Scope
+
+Lexical scoping 에 대해 더 자세히 알아보자.
+
+```js
+const x = 10;
+const first = function(){
+    console.log(x);
+}
+
+const second = function(){
+    const x = 20;
+    first();
+}
+
+second();
+```
+
+lexical scoping rule 을 따르는 Javascript 에서는 함수가 실행되는 순간이 아닌 code 를 작성할 때의 scope 를 따른다. 아래에서 위의 코드를 흐름을 순차적으로 보면서 어떤 일들이 벌어지는지 확인해보자.
+
+1. ```js
+   second(); 					// second 함수가 실행된다.
+   ```
+
+2. ```js
+   const second = function(){ 	// 실행되는 second 함수
+       const x = 20; 			// local binding 이 생성된다.
+       first(); 				// first 함수가 실행된다.
+   }
+   ```
+
+3. ```js
+   const first = function(){ 	// 실행되는 first 함수
+       console.log(x); 		// ?????
+   }
+   ```
+
+ `second` 함수가 실행되는 순간에 `second` 함수 내부에서 `x` 가 local binding 으로 생성이 된다. 그리고 `first` 함수가 실행이 되면서 `x` 를 출력을 하게 되는데 이 때 `x` 는 전역에서 생성한 `x` 가 될까 `second` 에서 생성한 `x` 가 될까? 
+
+정답은 전역 binding `x` 이다. `first` 함수가 `second` 함수 내부에서 동작하기 때문에 `second` 함수의 local binding `x` 가 `first` 함수의 `console.log(x)` 으로 출력이 된다고 생각할 수도 있지만 JavaScript 는 lexical scoping rule 을 따르기 때문에 함수가 실행이 되는 시점이 아닌 코드를 작성을 하는 순간의 scope 를 따르게 되어 전역 binding `x` 를 출력하게 된다. 때문에 이미 `first` 함수를 작성하고 있는 시점에 `console.log(x)` 의 `x` 는 전역에서 생성한 `x` 를 가르키게 되는 것이다.
+
